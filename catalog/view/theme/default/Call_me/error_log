@@ -1,0 +1,2 @@
+[03-Mar-2017 16:42:01 Europe/Kiev] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/renessanskrim/public_html/catalog/view/theme/default/Call_me/contact.php on line 32
+[09-Mar-2017 13:23:28 Europe/Kiev] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/renessanskrim/public_html/catalog/view/theme/default/Call_me/contact.php on line 32

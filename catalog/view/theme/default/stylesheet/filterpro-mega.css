@@ -1,0 +1,126 @@
+.irs {
+	height:0px !important;
+}
+	
+.ui-slider-handle.ui-state-default.ui-corner-all{
+    width: 20px !important;
+    height: 20px !important;
+    border: 1px solid #AAA !important;
+    background: transparent linear-gradient(to bottom, #FFF 0%, #DCDCDC 20%, #FFF 100%) repeat scroll 0% 0% !important;
+    border-radius: 27px !important;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) !important;
+    cursor: pointer !important;
+}
+
+.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all{
+    height: 10px  !important;
+    top: 33px  !important;
+    background: transparent linear-gradient(to bottom, #DDD -50%, #FFF 150%) repeat scroll 0% 0%  !important;
+    border: 1px solid #CCC  !important;
+    border-radius: 16px  !important;
+}
+
+#filterpro_box .ui-widget-header {
+    height: 11px  !important;
+    background: transparent linear-gradient(to top, #428BCA 0%, #7FC3E8 100%) repeat scroll 0% 0%  !important;
+}
+
+.price_limit{
+	width: 100%;
+	border:none;
+}
+
+.field-prod-text{
+	margin-top: 60px;
+}
+
+.prod-right .extra-row {
+    display: none;
+    margin-bottom: 10px;
+	#padding: 0px 20px 0px 0px;
+	float: left;
+}
+.prod-right .onlyextra {
+    display: none;
+}
+.prod-right .extra-row button {
+    width: auto;
+    margin:0px;
+	
+}
+
+.price_changed{
+   margin-bottom: 60px;
+}
+
+.input_square{
+   margin-bottom: 20px;
+}
+
+.foto_collage{
+    margin-left: 100px;
+}
+
+.input_search{
+	float: right;
+}
+
+.invisible_filter{
+	float: left;
+	width: 155px;
+}
+
+.field-prod-invis{
+    #float: left;
+}
+
+.field-prod-invis select {
+    width: 280px;
+    height: 33px;
+    margin: 20px 0px 20px;
+    text-indent: 15px;
+}
+
+.bolhe {
+    display: block;
+    float: left;
+    №clear: both;
+    color: #508cc2;
+    text-decoration: underline;
+    margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 17px;
+}
+
+.bg-prodaga-right-down{
+    position: relative;
+}
+
+.bg-color{
+    background: #1A2E4F none repeat scroll 0% 0%;
+    position: relative;
+    width: 310px;
+    margin-left: -30px;
+    padding: 0px 15px 20px 15px;
+}
+   
+.field-prod-invis label{
+	margin-top:20px;
+}
+
+.none-margin{
+	margin:0px !important;
+}
+
+.radio_option{
+    float: none !important;
+}
+
+
+   
+   
+   
+   
+   
+   
+   

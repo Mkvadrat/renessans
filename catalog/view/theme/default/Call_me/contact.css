@@ -1,0 +1,107 @@
+/*
+ * SimpleModal Contact Form
+ * http://www.ericmmartin.com/projects/simplemodal/
+ * http://code.google.com/p/simplemodal/
+ *
+ * Copyright (c) 2010 Eric Martin - http://ericmmartin.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Revision: $Id: contact.css 254 2010-07-23 05:14:44Z emartin24 $
+ */
+
+
+/* Overlay */
+#contact-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#contact-container {font: 16px/22px 'Trebuchet MS', Verdana, Arial; text-align:left; width:450px;
+-moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+-webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+}
+#contact-container .contact-content {
+box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+border-radius: 10px;
+-moz-box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+-webkit-box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+background-color: #E0E0E0;
+color: #000;
+border-radius: 10px;
+box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+height: auto !important;
+width: auto !important;
+padding: 15px;
+
+}
+#cal {display:block; position:fixed; left:0; top:200px;}
+#contact-container h1 {color:#d76300; font-size:20px; line-height:20px; margin:0; padding:0 0 6px 12px; text-align:left;}
+#contact-container .contact-loading {background:url('catalog/view/theme/default/Call_me/loading.gif'); no-repeat; height:55px; margin:-14px 0 0 190px; padding:0; position:absolute; width:54px; z-index:8000;}
+#contact-container .contact-message {text-align:center;}
+#contact-container .contact-error {background:#000; border:2px solid #ccc; font-size:14px; font-weight:bold; line-height:18px; margin:0 auto; padding:2px; width:92%;}
+#contact-container br {clear:both;}
+#contact-container form {margin:0; padding:0;}
+#contact-container label {clear:left; display:block; #float:left; font-weight:bold; padding-right:4px; text-align:right; width: auto;}
+#contact-container .contact-input {
+    text-indent: 10px;
+    background: #FFF url("../theme/default/img/s-b.png") repeat-x scroll left top;
+    padding: 0px 33px 0px 0px;
+    height: 34px;
+    border: 1px solid #CBCCCD;
+    border-radius: 3px;
+    box-shadow: 0px 2px 0px #F0F0F0;
+    font-size: 14px;
+    color: #575D62;
+    outline: medium none;
+    width: 90%;
+	}
+#contact-container textarea {height:114px;}
+#contact-container .contact-cc {cursor:default; font-size:14px; vertical-align:top;}
+#contact-container .contact-top {background-color:#E0E0E0; height:13px; margin:0; padding:0; -webkit-border-top-left-radius:8px; -webkit-border-top-right-radius:8px; -moz-border-radius-topleft:8px; -moz-border-radius-topright:8px; border-radius:8px 8px 0 0;}
+#contact-container .contact-bottom {background-color:#333; font-size:12px; height:13px; line-height:12px; text-align:center; -webkit-border-bottom-right-radius:8px; -webkit-border-bottom-left-radius:8px; -moz-border-radius-bottomright:8px; -moz-border-radius-bottomleft:8px; border-radius:0 0 8px 8px;
+-moz-box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+-webkit-box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.6);
+}
+#contact-container .contact-bottom a,
+#contact-container .contact-bottom a:link,
+#contact-container .contact-bottom a:active,
+#contact-container .contact-bottom a:visited {color:#666; position:relative; top:-4px; text-decoration:none;}
+#contact-container .contact-bottom a:hover {color:#888;}
+#contact-container .contact-button {
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 5px;
+    border: medium none;
+    border-radius: 6px;
+    width: 163px;
+    height: 35px;
+    background-image: url("../img/bg-but.png");
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 15px;
+}
+#contact-container .contact-button:hover {
+	color: #7AAFD6;
+}
+#contact-container a.modal-close,
+#contact-container a.modal-close:link,
+#contact-container a.modal-close:active,
+#contact-container a.modal-close:visited {color:#999; font-size:18px; font-weight:bold; position:absolute; text-decoration:none; right:8px; top:0px;}
+#contact-container a.modal-close:hover {color:#ccc;}
+.contact-title{
+    font-family: "Roboto Slab",serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    color: #323232;
+    border-bottom: 4px solid #ACD03A;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+	margin-bottom: 10px;
+}
+.lable_more lable{
+	padding: 0px 300px 0px 0px;
+}
