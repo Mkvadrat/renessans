@@ -19,14 +19,7 @@
 //sql запрос в базу для почты
 
  // DB
-/*
-define('DB_DRIVER', 'mysql');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'seomax_kn');
-define('DB_PASSWORD', 'mkvadrat');
-define('DB_DATABASE', 'seomax_rc');
-define('DB_PREFIX', '');
-*/
+
 include $_SERVER['DOCUMENT_ROOT'].'/config.php';
 
   $db = mysql_connect(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
