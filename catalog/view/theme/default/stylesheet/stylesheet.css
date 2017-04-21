@@ -2634,19 +2634,21 @@ h2 {
 h2:before {
 	background: transparent url("../img_object/h2-before.png") no-repeat scroll left center;
     content: "";
-    width: 130px;
+    width: 95px;
     height: 25px;
     display: inline-block;
 	padding: 10px 0px 0px 0px;
+    background-size: 100% auto;
 }
 
 h2:after {
 	background: transparent url("../img_object/h2-after.png") no-repeat scroll right center;
     content: "";
-    width: 130px;
+    width: 95px;
     height: 25px;
     display: inline-block;
 	padding: 10px 0px 0px 0px;
+    background-size: 100% auto;
 }
 
 h3 {
