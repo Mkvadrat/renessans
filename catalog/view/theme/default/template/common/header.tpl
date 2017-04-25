@@ -132,7 +132,7 @@
                 <div class="container">
                     <div class="head-block-left">
                         <div class="header-adress">
-                            <p>299011, Севастополь, ул. Гоголя, 31</p>
+                            <p>299011, Севастополь, <br/>ул. Гоголя, 31</p>
 						</div>
                         <div class="header-phone">
                             <p>+7 (8692) 54-39-21<br/> +7 (978) 727–03–33</p>
