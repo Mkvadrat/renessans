@@ -4042,3 +4042,38 @@ form.in-r {
     float: left;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.5);
 }
+
+
+
+/* 26.04.2017 */
+
+.slider2 {
+    margin-top: 0 !important;
+}
+
+#camera_wrap_2 {
+    margin-top: 0px !important;
+}
+
+.main-prod {
+    margin-top: 0 !important;
+}
+
+.prod-right {
+    -webkit-border-radius: 0;
+            border-radius: 0;
+}
+
+.name_city,
+.name_object,
+.name_price {
+    padding: 10px 0px 5px;
+}
+
+.price_changed {
+    margin-bottom: 0px !important;
+}
+
+.input_square {
+    margin-top: -40px !important;
+}
