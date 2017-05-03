@@ -8,8 +8,8 @@
 				<?php echo $column_right; ?>
                 </div>
               <div class="block-7">
-                        <div class="block-7-1">
-                            <h2><?php echo $heading_title; ?></h2>
+                        <div class="block-7-1 block-7-1-new">
+                            <h1><?php echo $heading_title; ?></h1>
 							<?php if(!empty($description)){?>
 							<?php  echo $description; ?>
 							<?php }else{ ?>
