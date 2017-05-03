@@ -4077,3 +4077,50 @@ form.in-r {
 .input_square {
     margin-top: -40px !important;
 }
+
+
+
+/* 03.05.3017 */
+
+.block-7-1-new h1,
+.block-7-1-new h3 {
+    font-size: 26px;
+    text-align: center;
+    color: #333;
+    font-family: "Lobster";
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.block-7-1-new h1:before,
+.block-7-1-new h1:after {
+    position: relative;
+    width: 90px;
+    background-size: 100% auto;
+}
+
+.block-7-1-new h1:before {
+    left: -20px;
+}
+
+.block-7-1-new h1:after {
+    right: -20px;
+}
+
+.block-7-1-new h2 {
+    margin-top: 0 !important;
+}
+
+.block-7-1-new ul li {
+    line-height: 30px;
+    text-align: justify;
+    padding-left: 20px;
+    font-size: 18px;
+    text-shadow: -0.3px -0.3px 0.3px rgba(255,255,255,0.2),
+    1px 1px 1px rgba(255,255,255,0.2),
+    1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.block-7-1-new h3 {
+    padding-top: 20px;
+}
