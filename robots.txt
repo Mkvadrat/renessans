@@ -48,3 +48,6 @@ Disallow: /*&filter_sub_category=
 Disallow: /*?filter_description=
 Disallow: /*&filter_description=
 Clean-param: tracking
+
+Host: renessans-krim.ru/
+Sitemap: renessans-krim.ru/sitemap.xml
