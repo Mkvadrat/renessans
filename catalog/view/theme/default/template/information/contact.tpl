@@ -8,7 +8,7 @@
                     <div class="contact-karta">
                         <div class="contact-karta-left">
                             <p class="cont-zag-1">Наш адрес:</p>
-                            <p>Севастополь,<br/>ул. Гоголя 31</p><br/>
+                            <p>Севастополь,<br/>ул. Большая Морская, 30</p><br/>
                             <p class="cont-zag-2">Телефоны:</p>
 							<p>Viber +79787177313</p>
                             <p>WhatsApp +79787270333</p>
@@ -19,9 +19,9 @@
                         </div>
                         <div class="contact-karta-right">
                             <p class="cont-zag-4">Мы на карте</p>
-                            <div class="wrap-karta">
-                            <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=NFn_Sbd8fseJWeu_cuV0tsFy-gyhoHd7&width=826&height=330"></script>
-							</div>
+			<div class="wrap-karta">
+			    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A653b1a4050fc4477bb8ebefda32851bfb73f2acd73feff1b4487ac751f13019c&amp;width=826&amp;height=330&amp;lang=ru_UA&amp;scroll=true"></script>
+			</div>
                         </div>
                     </div>
                     <div class="contact-forma">
