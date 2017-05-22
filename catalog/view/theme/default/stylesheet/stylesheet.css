@@ -1317,6 +1317,8 @@ ul.block-8-1 li p {
     font-size: 12px;
     padding-left: 5px;
 	width: 185px;
+    text-align: left;
+    text-transform: uppercase;
 }
 ul.block-8-1 li:first-child {
     margin-left: 0;
@@ -4124,4 +4126,10 @@ form.in-r {
 .block-7-1-new h3 {
     padding-top: 20px;
     font-size: 20px;
+}
+
+.horizontal dt, .horizontal dd{
+    height: 30px;
+    align-content: baseline;
+    text-align: left;
 }
