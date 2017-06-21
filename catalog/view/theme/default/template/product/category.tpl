@@ -192,4 +192,12 @@ if (view) {
 } else {
 	display('list');
 }
-//--></script> 
+//--></script>
+
+<script>
+	jQuery('.read-more').readmore({
+		maxHeight: 250,
+		moreLink: '<a class="hidden-text" href="#">Подробнее</a>',
+		lessLink: '<a class="hidden-text" href="#">Свернуть</a>'
+	});
+</script>

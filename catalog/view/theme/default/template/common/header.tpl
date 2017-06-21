@@ -101,6 +101,9 @@
 <script src="//yastatic.net/share2/share.js"></script>
 <!--Кнопки соцсетей yandex-->
 
+<!--Read more-->
+<script src="/catalog/view/javascript/readmore.js"></script>
+
 <?php echo $google_analytics; ?>
 
 <!-- =========================== Favicons =============================== -->
