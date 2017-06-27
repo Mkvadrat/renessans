@@ -4133,3 +4133,16 @@ form.in-r {
     align-content: baseline;
     text-align: left;
 }
+
+/*21.06.2017*/
+.hidden-text{
+    font-size: 26px;
+    text-align: center;
+    color: #333;
+    font-family: "Lobster";
+    font-weight: bold;
+}
+
+.descr_module_case{
+    text-align: left !important;
+}
