@@ -41,6 +41,7 @@ $_['text_order_status']                = 'Статусы заказов';
 $_['text_opencart']                    = 'Сайт';
 $_['text_payment']                     = 'Модули оплаты';
 $_['text_product']                     = 'Объекты';
+$_['text_featured']                    = 'Рекомендуемые обьекты';
 $_['text_reports']                     = 'Отчеты';
 $_['text_report_sale_order']           = 'Заказы';
 $_['text_report_sale_tax']             = 'Налог';

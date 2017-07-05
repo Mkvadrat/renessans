@@ -61,8 +61,10 @@ class ModelUserUser extends Model {
             'status',
             'date_added'
         );
+		
+		$sql .= " ORDER BY date_added DESC";
 
-        if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+        /*if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
             $sql .= " ORDER BY " . $data['sort'];
         } else {
             $sql .= " ORDER BY username";
@@ -72,7 +74,7 @@ class ModelUserUser extends Model {
             $sql .= " DESC";
         } else {
             $sql .= " ASC";
-        }
+        }*/
 
         if (isset($data['start']) || isset($data['limit'])) {
             if ($data['start'] < 0) {

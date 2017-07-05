@@ -59,7 +59,8 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_order_status'] = $this->language->get('text_order_status');
 		$this->data['text_opencart'] = $this->language->get('text_opencart');
 		$this->data['text_payment'] = $this->language->get('text_payment');
-		$this->data['text_product'] = $this->language->get('text_product'); 
+		$this->data['text_product'] = $this->language->get('text_product');
+		$this->data['text_featured'] = $this->language->get('text_featured'); 
 		$this->data['text_reports'] = $this->language->get('text_reports');
 		$this->data['text_report_sale_order'] = $this->language->get('text_report_sale_order');
 		$this->data['text_report_sale_tax'] = $this->language->get('text_report_sale_tax');
@@ -148,6 +149,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['order_status'] = $this->url->link('localisation/order_status', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['payment'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['featured'] = $this->url->link('module/featured', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['testimonial'] = $this->url->link('catalog/testimonial', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['report_sale_order'] = $this->url->link('report/sale_order', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['report_sale_tax'] = $this->url->link('report/sale_tax', 'token=' . $this->session->data['token'], 'SSL');
