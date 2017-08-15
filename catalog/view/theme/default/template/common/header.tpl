@@ -138,7 +138,7 @@
                             <p>299011, Севастополь, <br/>ул. Большая Морская, 30</p>
 						</div>
                         <div class="header-phone">
-                            <p>+7 (8692) 54-39-21<br/> +7 (978) 727–03–33</p>
+                            <p>+7 (978) 717-72-44<br/> +7 (978) 727–03–33</p>
 						</div>
                         <a href="#" class="callme_button">СВЯЗАТЬСЯ С НАМИ</a>
 					</div>
@@ -161,11 +161,11 @@
 							</span>
                             <span class="tooltip anim" tabindex="0">
                                 <img class="head-icon tooltip anim" src="catalog/view/theme/default/img/icon-2.png" tabindex="0" alt="" />
-                                <span>+79787177313</span>
+                                <span>79787270333</span>
 							</span>
                             <span class="tooltip anim" tabindex="0">
                                 <img class="head-icon tooltip anim" src="catalog/view/theme/default/img/icon-1.png" tabindex="0" alt="" />
-                                <span>+79787270333</span>
+                                <span>79787270333</span>
 							</span>
 						</div>
 					</div>

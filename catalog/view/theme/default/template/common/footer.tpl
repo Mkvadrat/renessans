@@ -62,7 +62,7 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
                     <p><?php echo $address ;?></p>
                 </div>
                 <div class="footer-phone">
-                   <p>+7(8692)54-39-21<br>+79 7872 70333</p>
+                   <p>+7(978)717-72-44<br>+7(978)727-03-33</p>
                 </div>
                 <div class="footer-mail">
                    <p><?php echo $email ;?></p>
