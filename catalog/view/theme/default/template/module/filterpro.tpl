@@ -18,17 +18,18 @@
 </script>
 <!------------------------------------------------Обязательные поля-----------------------------------------------> 
 <!-----------------------------------------------Для раздела продажа---------------------------------------------->
-<?php $i = 0; ?>
-<?php foreach($category_area_sale as $sale){ ?>
-<?php if($category_id == 20 || $category_id == $sale){?>
-<?php if(++$i == 2) break; ?>
+<?php //$i = 0; ?>
+<?php //foreach($category_area_sale as $sale){ ?>
+<?php if($category_id == 20 || in_array($category_id, $category_area_sale)){ ?>
+<?php //if(++$i == 2) break; ?>
 <div class="option_requred">
 
 <!---------------------------------------------------Вывод опций--------------------------------------------------> 
 
 <!--Блок вывода других обьектов из других категорий--> 
 	<?php if($category_id !== false) { ?>
-		<input type="hidden" name="category_id" value="<?php echo $category_id ?>">
+		<div class="sale_reset"></div>
+		<input type="hidden" class="search_sale" name="category_id" value="<?php echo $category_id ?>">
 	<?php } ?>
 <!--Блок вывода других обьектов из других категорий--> 
 <div class="field-prod">
@@ -145,7 +146,7 @@
 
 <!------------------------------------------------Кнопка поиска-------------------------------------------------->      
  
-<button class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);return false;">Начать поиск</button> 
+<button class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);getResetSale();return false;">Начать поиск</button> 
 
 <!------------------------------------------------Кнопка поиска--------------------------------------------------> 
 
@@ -216,21 +217,21 @@
 </div>-->
 </div>  
 <?php } ?>
-<?php } ?>
+<?php //} ?>
 <!-----------------------------------------------Для раздела продажа---------------------------------------------->
 
 <!------------------------------------------------Для раздела аренда---------------------------------------------->
-<?php $i = 0; ?>
-<?php foreach($category_area_rent as $rent){ ?>
-<?php if($category_id == 18 || $category_id == $rent){ ?>
-<?php if(++$i == 2) break; ?>
+<?php //$i = 0; ?>
+<?php //foreach($category_area_rent as $rent){ ?>
+<?php if($category_id == 18 || in_array($category_id, $category_area_rent)){ ?>
+<?php //if(++$i == 2) break; ?>
 <div class="option_requred">
-
 <!---------------------------------------------------Вывод опций--------------------------------------------------> 
 
 <!--Блок вывода других обьектов из других категорий--> 
 	<?php if($category_id !== false) { ?>
-		<input type="hidden" name="category_id" value="<?php echo $category_id ?>">
+		<div class="rent_reset"></div>
+		<input type="hidden" class="search_rent" name="category_id" value="<?php echo $category_id ?>">
 	<?php } ?>
 <!--Блок вывода других обьектов из других категорий--> 
 <div class="field-prod">
@@ -359,7 +360,7 @@
 
 <!------------------------------------------------Кнопка поиска-------------------------------------------------->      
  
-<button id="search_button" class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);return false;">Начать поиск</button> 
+<button id="search_button" class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);getResetRent();return false;">Начать поиск</button> 
 
 <!------------------------------------------------Кнопка поиска--------------------------------------------------> 
 
@@ -430,7 +431,7 @@
 </div>-->
 </div>  
 <?php } ?>
-<?php } ?>
+<?php //} ?>
 <!------------------------------------------------Для раздела аренда---------------------------------------------->
 
 <!-------------------------------------------Вывод опций в скрытом разделе--------------------------------------->   
@@ -452,10 +453,19 @@
         iF();
     }
 
-    function setLimit(data){
-        jQuery('#pricesort').attr('data-limit',data);
-        iF();
-    }
+	function getResetSale(){
+		jQuery('.search_sale').remove();
+		jQuery('.sale_reset').after('<?php if(in_array($category_id, $category_area_sale) || $category_id == 20){ ?><input type="hidden" class="search_sale" name="category_id" value="20"><?php } ?>');
+
+		iF();
+	}
+	
+	function getResetRent(){
+		jQuery('.search_rent').remove();
+		jQuery('.rent_reset').after('<?php if(in_array($category_id, $category_area_rent) || $category_id == 18){ ?><input type="hidden" class="search_rent" name="category_id" value="18"><?php } ?>');
+
+		iF();
+	}
 
     function show_filter_extra_rows() {
         if (jQuery('#filterpro .extra-row').css('display')=='none') {

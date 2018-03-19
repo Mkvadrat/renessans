@@ -1,4 +1,4 @@
-    <?php foreach ($products as $product) { ?>
+	<?php foreach ($products as $product) { ?>
         <li>
            <a href="<?php echo $product['href']; ?>"> <?php if ($product['thumb']) { ?>
                 <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>"/>

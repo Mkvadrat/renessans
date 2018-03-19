@@ -199,6 +199,18 @@ class ControllerModuleFilterPro extends Controller {
 			$data = array('category_id' => $category_id, 'manufacturer_id' => $manufacturer_id);
 
 			$this->load->model('module/filterpro');
+			
+			$get_parent_sale = $this->model_module_filterpro->getCategoriesByParentId(20);
+			
+			$get_parent_rent = $this->model_module_filterpro->getCategoriesByParentId(18);
+			
+			foreach($get_parent_sale as $category_parent_sale){ 
+					$this->data['category_normal_sale'][] = $category_parent_sale;
+			}
+			
+			foreach($get_parent_rent as $number_array => $category_parent_rent){ 
+					$this->data['category_normal_rent'][] = $category_parent_rent;
+			}
 
 			$this->data['manufacturers'] = false;
 			if(isset($this->request->get['manufacturer_id'])) {
@@ -314,8 +326,6 @@ class ControllerModuleFilterPro extends Controller {
 			/*Сравнение массива категорий с массивом данных из категории район продажи */
 			
 			/*Сравнение массива категорий с массивом данных из категории район аренда */
-			$this->load->model('catalog/category');
-			
             $this->data['category_area_rent'] = $this->model_catalog_category->getCategoriesByParentId(119);
 			/*Сравнение массива категорий с массивом данных из категории район аренда */
 
@@ -597,14 +607,12 @@ class ControllerModuleFilterPro extends Controller {
 		}
 		$totals_categories = $this->model_module_filterpro->getTotalCategories($data, $category_id);
 
-        if ($category_id == 105) {
+        /*if ($category_id == 105) {
             $data['categories'] = false;
             $results = $this->model_module_filterpro->getSpecialProducts($data);
             $product_total = $this->model_module_filterpro->getTotalSpecialProducts($data);
-        } else if (/*$category_id == 82 ||*/ $category_id == 69 || $category_id == 104) {
-           /* if ($category_id == 82) {
-                $category_id = 20;
-            } else*/ if ($category_id == 69) {
+        } else if ($category_id == 69 || $category_id == 104) {
+			if ($category_id == 69) {
                 $category_id = 18;
             } else if ($category_id == 104) {
                 $category_id = 94;
@@ -630,9 +638,21 @@ class ControllerModuleFilterPro extends Controller {
 
             $results = $this->model_catalog_product->getSpecialProducts($data);
         } else {
-            $results = $this->model_module_filterpro->getProducts($data);
-            $product_total = $this->model_module_filterpro->getTotalProducts($data);
-        }
+
+        }*/
+		
+		$this->load->model('catalog/category');
+		
+		$category_area_sale = $this->model_catalog_category->getCategoriesByParentId(118);
+		$category_area_rent = $this->model_catalog_category->getCategoriesByParentId(119);
+		
+		if ($category_id == 20 || in_array($category_id, $category_area_sale)) {
+			$results = $this->model_module_filterpro->getProducts($data);
+			$product_total = $this->model_module_filterpro->getTotalProducts($data);
+		}elseif($category_id == 18 || in_array($category_id, $category_area_rent)){
+			$results = $this->model_module_filterpro->getProducts($data);
+			$product_total = $this->model_module_filterpro->getTotalProducts($data);
+		}
 
         if($order = 'ASC'){
            // var_dump($results);
@@ -660,7 +680,8 @@ class ControllerModuleFilterPro extends Controller {
 		$pagination->url = $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&page={page}');
 
 
-		$min_price = $this->currency->convert($min_price * $this->k, $this->config->get('config_currency'), $this->currency->getCode());
+		//$min_price = $this->currency->convert($min_price * $this->k, $this->config->get('config_currency'), $this->currency->getCode());
+		$min_price = 0; 
 		$max_price = $this->currency->convert($max_price * $this->k, $this->config->get('config_currency'), $this->currency->getCode());
 
 
@@ -678,7 +699,7 @@ class ControllerModuleFilterPro extends Controller {
 	private function getHtmlProducts($results, $product_total) {
 		
 		$this->load->model('catalog/category');
-	    $this->data['category_area_rent'] = $this->model_catalog_category->getCategoriesByParentId(119);
+	    //$this->data['category_area_rent'] = $this->model_catalog_category->getCategoriesByParentId(119);
 		$category_id = explode('_', (string)$this->request->get['path']);
 		$this->data['category_id'] = $category_id[0];
 

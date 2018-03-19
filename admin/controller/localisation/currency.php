@@ -159,6 +159,7 @@ class ControllerLocalisationCurrency extends Controller {
 		
 		$this->data['insert'] = $this->url->link('localisation/currency/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/currency/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['refresh'] = $this->url->link('localisation/currency/refresh', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		
 		$this->data['currencies'] = array();
 
@@ -464,6 +465,46 @@ class ControllerLocalisationCurrency extends Controller {
 		} else {
 			return false;
 		}
+	}
+	
+	public function refresh() {
+		$this->load->language('localisation/currency');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('localisation/currency');
+
+		if ($this->validateRefresh()) {
+			$this->model_localisation_currency->updateCurrencies(true);
+
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$url = '';
+
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+
+			$this->redirect($this->url->link('localisation/currency', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+		}
+
+		$this->getList();
+	}
+	
+	protected function validateRefresh() {
+		if (!$this->user->hasPermission('modify', 'localisation/currency')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		return !$this->error;
 	}	
 }
 ?>

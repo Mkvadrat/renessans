@@ -23,6 +23,8 @@ Disallow: /*?filter_description=
 Disallow: /*&filter_description=
 Disallow: /*?tracking=
 Disallow: /*&tracking=
+Disallow: */modal/
+Disallow: */?page=
 
 User-agent: Yandex
 Disallow: /*route=account/
@@ -47,7 +49,8 @@ Disallow: /*?filter_sub_category=
 Disallow: /*&filter_sub_category=
 Disallow: /*?filter_description=
 Disallow: /*&filter_description=
-Clean-param: tracking
+Disallow: */modal/
+Disallow: */?page=
 
 Host: renessans-krim.ru/
-Sitemap: renessans-krim.ru/sitemap.xml
+Sitemap: http://renessans-krim.ru/sitemap.xml

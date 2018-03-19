@@ -394,7 +394,7 @@ class ControllerProductCategory extends Controller {
 
 					
 
-            if ($category_id == 105) {
+            /*if ($category_id == 105) {
                 $data['filter_category_id'] = false;
                 $product_total = $this->model_catalog_product->getTotalSpecialProducts($data);
 
@@ -414,10 +414,12 @@ class ControllerProductCategory extends Controller {
 
                 $results = $this->model_catalog_product->getSpecialProducts($data);
             } else {
-                $product_total = $this->model_catalog_product->getTotalProducts($data);
 
-                $results = $this->model_catalog_product->getProducts($data);
-            }
+            }*/
+			
+			$product_total = $this->model_catalog_product->getTotalProducts($data);
+
+            $results = $this->model_catalog_product->getProducts($data);
 
 
             $this->load->model('localisation/currency');
@@ -823,7 +825,7 @@ class ControllerProductCategory extends Controller {
 			}
 
             $this->data['minimum_limit'] = $product_total;
-
+			
 			$pagination = new Pagination();
 
 			$pagination->total = $product_total;

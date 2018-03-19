@@ -58,7 +58,7 @@
 					</div>
                 <div class="block-8" >
 				<h2><?php echo $heading_title; ?></h2>
-				<?php if ($products) { ?>
+				<?php if ($products || $category_id == 20 || in_array($category_id, $category_area_sale) || $category_id == 18 || in_array($category_id, $category_area_rent)) { ?>
   <ul class="block-8-1">
   <div class="product-list">
     <?php foreach ($products as $product) { ?>
@@ -92,9 +92,9 @@
 	 </div>
   </ul>
   <?php } ?>
-                        <?php if($minimum_limit > 10){ ?>
+            
 						<div class="pagination"><?php echo $pagination; ?></div>
-						<?php } ?>
+						
                     </div>
             </div>
            <?php echo $content_bottom; ?>

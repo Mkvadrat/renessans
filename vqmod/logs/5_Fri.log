@@ -1,14 +1,29 @@
----------- Date: 2016-10-21 19:28:49 ~ IP : 91.107.117.127 ----------
-REQUEST URI : /admin/index.php?route=catalog/information/update&amp;token=a243256b31db2650bc73acd6e54d39a2&amp;information_id=70
+---------- Date: 2017-10-20 08:25:58 ~ IP : 188.190.222.135 ----------
+REQUEST URI : /admin/index.php?route=catalog/category/update&amp;token=a089e95cd80d2638913dc5598fdba1b2&amp;category_id=20
 MOD DETAILS:
-   modFile   : /home/renessanskrim/public_html/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
+   modFile   : /var/www/u0381560/public_html/renessans/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
    id        : Admin Theme - Base 5 Builder - ImpulsePro
    version   : 1.0.4
    vqmver    : 2.0
    author    : Niyi Sodipe - Base5Builder.com
 
-File Name    : admin/view/template/catalog/information_*.tpl(0)
-VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/information.png" alt="" /> <?php echo $heading_title; ?></h1>
+File Name    : admin/view/template/catalog/category_*.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/category.png" alt="" /> <?php echo $heading_title; ?></h1>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2017-10-20 11:34:20 ~ IP : 188.190.222.135 ----------
+REQUEST URI : /admin/index.php?route=catalog/product/update&amp;token=a089e95cd80d2638913dc5598fdba1b2&amp;product_id=816
+MOD DETAILS:
+   modFile   : /var/www/u0381560/public_html/renessans/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
+   id        : Admin Theme - Base 5 Builder - ImpulsePro
+   version   : 1.0.4
+   vqmver    : 2.0
+   author    : Niyi Sodipe - Base5Builder.com
+
+File Name    : admin/view/template/catalog/product_*.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
 
 ----------------------------------------------------------------------
 

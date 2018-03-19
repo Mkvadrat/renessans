@@ -1,7 +1,17 @@
 <?php
+require(DIR_SYSTEM . 'library/cbr/autoloader.php');
+require(DIR_SYSTEM . 'library/cbr/currencydaily.php');
+require(DIR_SYSTEM . 'library/cbr/currencyperiod.php');
+require(DIR_SYSTEM . 'library/cbr/request.php');
+use CBR\CurrencyDaily;
+
 class ModelLocalisationCurrency extends Model {
 	public function addCurrency($data) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "currency SET title = '" . $this->db->escape($data['title']) . "', code = '" . $this->db->escape($data['code']) . "', symbol_left = '" . $this->db->escape($data['symbol_left']) . "', symbol_right = '" . $this->db->escape($data['symbol_right']) . "', decimal_place = '" . $this->db->escape($data['decimal_place']) . "', value = '" . $this->db->escape($data['value']) . "', status = '" . (int)$data['status'] . "', date_modified = NOW()");
+
+		if ($this->config->get('config_currency_auto')) {
+			$this->updateCurrencies(true);
+		}
 
 		$this->cache->delete('currency');
 	}
@@ -20,11 +30,13 @@ class ModelLocalisationCurrency extends Model {
 
 	public function getCurrency($currency_id) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "currency WHERE currency_id = '" . (int)$currency_id . "'");
+	
 		return $query->row;
 	}
 	
 	public function getCurrencyByCode($currency) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "currency WHERE code = '" . $this->db->escape($currency) . "'");
+	
 		return $query->row;
 	}
 		
@@ -70,6 +82,8 @@ class ModelLocalisationCurrency extends Model {
 			$currency_data = $this->cache->get('currency');
 
 			if (!$currency_data) {
+				$currency_data = array();
+				
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency ORDER BY title ASC");
 	
 				foreach ($query->rows as $result) {
@@ -91,120 +105,62 @@ class ModelLocalisationCurrency extends Model {
 			
 			return $currency_data;			
 		}
-	}
+	}	
 
-	public function updateCurrencies() {
-	
-	$query = $this->db->query("SELECT date_modified FROM " . DB_PREFIX . "currency WHERE code != '" . $this->db->escape($this->config->get('config_currency')) . "'");
-	$cc_value = $this->db->query("SELECT value FROM " . DB_PREFIX . "currency WHERE code = '" . $this->db->escape($this->config->get('config_currency')) . "'");
-	$i = 0;
-	foreach ($query->rows as $mdate) {
-		if($this->db->escape(date('Y-m-d',strtotime($mdate['date_modified']))) < $this->db->escape(date('Y-m-d', strtotime('now')))) $i++;
-	}
-	$manual_update = isset($this->request->post['manual_update']) ? $this->request->post['manual_update'] : false;
-	if ($i || $cc_value->row['value'] != 1.00000 || $manual_update)	{
-	$url = 'http://www.cbr.ru/scripts/XML_daily.asp';
-	$answer = $this->CheckHttpStatus($url);
-	if ($answer != 200) {
-	/*
-	echo '<script type="text/javascript" charset="utf-8">
-	alert("Не удалось загрузить файл курсов валют с сайта ЦБРФ! Код статуса ответа сервера: '.$answer.'. URL: '.$url.' . Возможны временные сбои на сервере, попробуйте обновить курсы позже. Дата последнего обновления валют: ' . $ldate["date_modified"] . '");
-	</script>';	
-	*/
-	} else {
-	
-		if (extension_loaded('curl')) {
-			$data = array();
-						
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, 'http://www.cbr.ru/scripts/XML_daily.asp');
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$content = curl_exec($ch);
-			curl_close($ch);
-
-			$doc = new DOMDocument();
-			$doc->loadXML($content);
-			$valute = $doc->getElementsByTagName("Valute");
-			
-			$cur_val = $this->config->get('config_currency') == 'RUB' ? 'RUB' : $this->config->get('config_currency');
-	
+	public function updateCurrencies($force = false) {
+		$array_data = array();
+		
+		if ($force) {
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code != '" . $this->db->escape($this->config->get('config_currency')) . "'");
+		} else {
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code != '" . $this->db->escape($this->config->get('config_currency')) . "' AND date_modified < '" .  $this->db->escape(date('Y-m-d H:i:s', strtotime('-1 day'))) . "'");
+		}
+		
+		$handler = new CurrencyDaily();
 
-			$ret = array();
+		$get_valute = $handler
+		->request() 
+		->getResult();
+								
+		$current_code = $this->config->get('config_currency') == 'RUB' ? 'RUB' : $this->config->get('config_currency');
 
-			foreach( $valute as $value )
-			{
-				$icn = $value->childNodes;
-				$code = $icn->item(3)->nodeValue;
-				$nom = intval($icn->item(5)->nodeValue);
-				$value = floatval(str_replace(",", "." , $icn->item(9)->nodeValue));
-				$ret[$code] = ($value/$nom);
-			}
-			
-			if ($cur_val == 'RUB') {
-			foreach ($query->rows as $result) {
-		    if($result['code'] != 'PAR'){
-			 if($ret[$result['code']]){
-				$value = 1 / $ret[$result['code']];
-
-				if ((float)$value) {
-					$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$value . "', date_modified = NOW() WHERE code = '" . $this->db->escape($result['code']) . "'");
-				}
-			 }
-			}
-			}
-			
-			}
-
-			if ($cur_val != 'RUB') {
-			
-			foreach ($query->rows as $result) {
-			    if($result['code'] == 'RUB') {
-				$value = $ret[$cur_val];
-				if ((float)$value) {
-				    $this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$value . "', date_modified = NOW() WHERE code = 'RUB'");
-				}
-				} else {
-					if($result['code'] != 'PAR'){
-				    $value = $ret[$result['code']];
-				    if ((float)$value) {
-					$val = (float)$ret[$cur_val] / (float)$value;
-				        $this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . $val . "', date_modified = NOW() WHERE code = '" . $this->db->escape($result['code']) . "'");
-				    }
+		foreach($get_valute as $valute){
+			$array_data[] = array(
+				'code' => $valute['CharCode'],
+				'value'=> $valute['Value']
+			);
+		}
+		
+		foreach ($query->rows as $result) {
+			foreach($array_data as $data){
+				
+				if($result['code'] == $data['code']){						
+					if ((float)$data['value']) {
+						$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$data['value'] . "', date_modified = NOW() WHERE code = '" . $this->db->escape($result['code']) . "'");
 					}
 				}
-			}
-			}
-			
-			$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '1.00000', date_modified = NOW() WHERE code = '" . $this->db->escape($this->config->get('config_currency')) . "'");
-			
-			$this->cache->delete('currency');
-
+				
+				if($data['code'] == $current_code && $result['code'] == 'RUB'){
+					$value = 1 * (float)$data['value'];
+					
+					if((float)$value){
+						$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$value . "', date_modified = NOW() WHERE code = 'RUB'");
+					}
+				}elseif($result['code'] == 'USD'){
+					$value = 1 / (float)$data['value'];
+					
+					if((float)$value){
+						$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$value . "', date_modified = NOW() WHERE code = 'USD'");
+					}
+				}
+				
+			}	
 		}
-	} }
-	
+		
+		$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '1.00000', date_modified = '" .  $this->db->escape(date('Y-m-d H:i:s')) . "' WHERE code = '" . $this->db->escape($this->config->get('config_currency')) . "'");
+		
+		$this->cache->delete('currency');
 	}
-
-public function CheckHttpStatus($url) {
-  $user_agent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)';
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_VERBOSE, false);
-  curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-  curl_setopt($ch, CURLOPT_SSLVERSION, 3);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-  $page = curl_exec($ch);
-
-  $err = curl_error($ch);
-  if (!empty($err)) return $err;
-  
-  $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  curl_close($ch);
-  return $httpcode;
-  }	
 	
 	public function getTotalCurrencies() {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "currency");
