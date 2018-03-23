@@ -1,14 +1,29 @@
----------- Date: 2016-09-14 16:36:25 ~ IP : 5.149.220.152 ----------
-REQUEST URI : /admin/index.php?route=common/filemanager&amp;token=2563869e7d4b40cd052a9acd02fa4b79&amp;field=image
+---------- Date: 2018-03-21 14:06:07 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=catalog/product&amp;token=a8d6e35745dbc8f6f82afecda637b1e0
 MOD DETAILS:
-   modFile   : /home/renessanskrim/public_html/vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
+   modFile   : D:\OpenServer\domains\renessans-krim.loc\vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
    id        : Admin Theme - Base 5 Builder - ImpulsePro
    version   : 1.0.4
    vqmver    : 2.0
    author    : Niyi Sodipe - Base5Builder.com
 
-File Name    : admin/view/template/common/filemanager.tpl(0)
-VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $button_refresh; ?></a></div>
+File Name    : admin/view/template/catalog/product_*.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2018-03-21 17:08:51 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=catalog/product&amp;token=deb86651e8cf445cf9b7d7a33dacec58
+MOD DETAILS:
+   modFile   : D:\OpenServer\domains\renessans-krim.loc\vqmod/xml/admin_theme_base5builder_impulsepro_1.5.4-below.xml
+   id        : Admin Theme - Base 5 Builder - ImpulsePro
+   version   : 1.0.4
+   vqmver    : 2.0
+   author    : Niyi Sodipe - Base5Builder.com
+
+File Name    : admin/view/template/catalog/product_*.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
 
 ----------------------------------------------------------------------
 

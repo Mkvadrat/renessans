@@ -214,21 +214,21 @@ public function getParse(){
       if($item->{'deal-status'}){
         $deals_status = json_decode( json_encode($item->{'deal-status'}) , 1);
         foreach($deals_status as $deal_status){
-          $deal_status = ['Статус сделки' => $deal_status]; ;
+          $deal_status = ['Тип сделки' => $deal_status]; ;
         }
       }
       
       if($item->{'room-furniture'}){
         $rooms_furniture = json_decode( json_encode($item->{'room-furniture'}) , 1);
         foreach($rooms_furniture as $room_furniture){
-          $room_furniture = ['Количество мебели' => $room_furniture]; ;
+          $room_furniture = ['Наличие мебели' => $room_furniture]; ;
         }
       }
       
       if($item->{'bathroom-unit'}){
         $bathrooms_unit = json_decode( json_encode($item->{'bathroom-unit'}) , 1);
         foreach($bathrooms_unit as $bathroom_unit){
-          $bathroom_unit = ['Ванная комната' => $bathroom_unit]; ;
+          $bathroom_unit = ['Тип санузла' => $bathroom_unit]; ;
         }
       }
     
@@ -242,7 +242,7 @@ public function getParse(){
       if($item->{'rooms'}){
         $rooms_vl = json_decode( json_encode($item->{'rooms'}) , 1);
         foreach($rooms_vl as $rooms){
-          $rooms = ['Комнат' => $rooms]; ;
+          $rooms = ['Общее количество комнат в квартире' => $rooms]; ;
         }
       }
       
@@ -256,15 +256,86 @@ public function getParse(){
       if($item->{'floors-total'}){
         $floors_totals = json_decode( json_encode($item->{'floors-total'}) , 1);
         foreach($floors_totals as $floors_total){
-          $floors_total = ['Количество этажей' => $floors_total]; ;
+          $floors_total = ['Общее количество этажей в доме' => $floors_total]; ;
         }
       }
       
       if($item->{'area'}){
         $areas = json_decode( json_encode($item->{'area'}) , 1);
-        /*foreach($floors_totals as $floors_total){
-          $floors_total = ['Количество этажей' => $floors_total]; ;
-        }*/
+        
+        $value = $areas['value'] ? $areas['value'] : null;
+        $unit = $areas['unit'] ? $areas['unit'] : null;
+       
+        $area = ['Общая площадь' => $value . $unit];
+      }
+      
+      if($item->{'living-space'}){
+        $living_spaces = json_decode( json_encode($item->{'living-space'}) , 1);
+        
+        $value = $living_spaces['value'] ? $living_spaces['value'] : null;
+        $unit = $living_spaces['unit'] ? $living_spaces['unit'] : null;
+       
+        $living_space = ['Жилая площадь' => $value . $unit];
+      }
+      
+      if($item->{'kitchen-space'}){
+        $kitchen_spaces = json_decode( json_encode($item->{'kitchen-space'}) , 1);
+        
+        $value = $kitchen_spaces['value'] ? $kitchen_spaces['value'] : null;
+        $unit = $kitchen_spaces['unit'] ? $kitchen_spaces['unit'] : null;
+       
+        $kitchen_space = ['Площадь кухни' => $value . $unit];
+      }
+      
+      if($item->{'kitchen-space'}){
+        $kitchen_spaces = json_decode( json_encode($item->{'kitchen-space'}) , 1);
+        
+        $value = $kitchen_spaces['value'] ? $kitchen_spaces['value'] : null;
+        $unit = $kitchen_spaces['unit'] ? $kitchen_spaces['unit'] : null;
+       
+        $kitchen_space = ['Площадь кухни' => $value . $unit];
+      }
+      
+      if($item->{'phone'}){
+        $phones = json_decode( json_encode($item->{'phone'}) , 1);
+        foreach($phones as $phone){
+          $phone = ['Наличие телефона' => $phone]; ;
+        }
+      }
+      
+      if($item->{'balcony'}){
+        $balconys = json_decode( json_encode($item->{'balcony'}) , 1);
+        foreach($balconys as $balcony){
+          $balcony = ['Тип балкона' => $balcony]; ;
+        }
+      }
+      
+      if($item->{'building-type'}){
+        $building_types = json_decode( json_encode($item->{'building-type'}) , 1);
+        foreach($building_types as $building_type){
+          $building_type = ['Тип дома' => $building_type]; ;
+        }
+      }
+      
+      if($item->{'water-supply'}){
+        $water_supplys = json_decode( json_encode($item->{'water-supply'}) , 1);
+        foreach($water_supplys as $water_supply){
+          $water_supply = ['Водопровод' => $water_supply]; ;
+        }
+      }
+      
+      if($item->{'internet'}){
+        $internets = json_decode( json_encode($item->{'internet'}) , 1);
+        foreach($internets as $internet){
+          $internet = ['Наличие интернета' => $internet]; ;
+        }
+      }
+      
+      if($item->{'new-flat'}){
+        $new_flats = json_decode( json_encode($item->{'new-flat'}) , 1);
+        foreach($new_flats as $new_flat){
+          $new_flat = ['Признак новостройки' => $new_flat]; ;
+        }
       }
       
       if($item->{'agent-fee'}){
@@ -280,13 +351,7 @@ public function getParse(){
           $commission = ['Комиссия' => $ob_commission]; ;
         }
       }
-      
-
-      
-      
-      
-      
-      
+ 
       $options[] = array(
         'deal_status' => $deal_status,
         'room_furniture' => $room_furniture,
@@ -295,18 +360,18 @@ public function getParse(){
         'rooms' => $rooms,
         'floor' => $floor,
         'floors_total' => $floors_total,
+        'area' => $area,
+        'kitchen_space' => $kitchen_space,
+        'living_space' => $living_space,
+        'phone' => $phone,
+        'balcony' => $balcony,
+        'building_type' => $building_type,
+        'water_supply' => $water_supply,
+        'internet' => $internet,
         'agent_feed' => $agent_feed,
         'commission' => $commission
       );
-      
-      
-      
-      
-      
-      
-      
-      
-      
+ 
       $data[] = array(
         'ids' => $ids, 
         'types' => $types,
@@ -317,24 +382,8 @@ public function getParse(){
         'info' => $info,
         'options' => $options
       );
-      
-      
-      
-      
-      
-      
-      
     }
-    var_dump($areas);
-    /*foreach($data as $datas){
-      foreach($datas['options'] as $options){
-        if($options)
-        foreach($options as $name => $value){
-          echo $name . $value;
-        }
-      }
-    }*/
-   
+
   }else{
     echo "Отсутствует файл!";
   }

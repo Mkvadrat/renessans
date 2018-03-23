@@ -123,7 +123,7 @@ class ModelLocalisationCurrency extends Model {
 		->getResult();
 								
 		$current_code = $this->config->get('config_currency') == 'RUB' ? 'RUB' : $this->config->get('config_currency');
-
+		
 		foreach($get_valute as $valute){
 			$array_data[] = array(
 				'code' => $valute['CharCode'],
