@@ -112,6 +112,7 @@ class ControllerParseParse extends Controller {
 		//$item = 'http://renessans-krim.loc/sitemap/yrlsite.xml';
 		//var_dump($items);
 		if($items) {
+			$options = array();
 			foreach($items->offer as $item){	
 				if($item{'internal-id'}){
 					$internal_id = json_decode( json_encode($item{'internal-id'}) , 1);
@@ -306,78 +307,53 @@ class ControllerParseParse extends Controller {
 				}
 				
 				//Options
-				$deal_status = array();
-				$room_furniture = array();
-				$bathroom_unit = array();
-				$renovation = array();
-				$rooms = array();
-				$floor = array();
-				$floors_total = array();
-				$area = array();
-				$kitchen_space = array();
-				$living_space = array();
-				$phone = array();
-				$balcony = array();
-				$building_type = array();
-				$mortgage = array();
-				$water_supply = array();
-				$internet = array();
-				$agent_feed = array();
-				$commission = array();
-				$with_pets = array();
-				$with_children = array();
-				$kitchen_furniture = array();
-				$television = array();
-				$washing_machine = array();
-				$refrigerator = array();
-				$gas_supply = array();
-				
+				$options = array();
 				if($item->{'deal-status'}){
 					$deals_status = json_decode( json_encode($item->{'deal-status'}) , 1);
 					foreach($deals_status as $deal_status){
-						$deal_status = ['name'=>'Тип сделки','value'=>$deal_status];
+						$options[] = ['name'=>'Тип сделки', 'value'=>$deal_status];
 					}
 				}
 				
 				if($item->{'room-furniture'}){
 					$rooms_furniture = json_decode( json_encode($item->{'room-furniture'}) , 1);
 					foreach($rooms_furniture as $room_furniture){
-						$room_furniture = ['name'=>'Мебель', 'value'=>$room_furniture];
+						$options[] = ['name'=>'Мебель', 'value'=>$room_furniture];
 					}
 				}
 				
 				if($item->{'bathroom-unit'}){
 					$bathrooms_unit = json_decode( json_encode($item->{'bathroom-unit'}) , 1);
 					foreach($bathrooms_unit as $bathroom_unit){
-						$bathroom_unit = ['name'=>'Тип санузла', 'value'=>$bathroom_unit];
+						$options[] = ['name'=>'Тип санузла', 'value'=>$bathroom_unit];
 					}
 				}
 			  
 				if($item->{'renovation'}){
 					$renovations = json_decode( json_encode($item->{'renovation'}) , 1);
 					foreach($renovations as $renovation){
-						$renovation = ['name'=>'Ремонт', 'value'=>$renovation];
+						$options[] = ['name'=>'Ремонт', 'value'=>$renovation];
 					}
 				}
 				
 				if($item->{'rooms'}){
 					$rooms_vl = json_decode( json_encode($item->{'rooms'}) , 1);
 					foreach($rooms_vl as $rooms){
-						$rooms = ['name'=>'Количество комнат', 'value'=>$rooms];
+						$options[] = ['name'=>'Количество комнат', 'value'=>$rooms];
 					}
 				}
 				
 				if($item->{'floor'}){
 					$floors = json_decode( json_encode($item->{'floor'}) , 1);
 					foreach($floors as $floor){
-						$floor = ['name'=>'Этаж', 'value'=>$floor]; ;
+						$options[] = ['name'=>'Этаж', 'value'=>$floor];
 					}
 				}
 				
 				if($item->{'floors-total'}){
 					$floors_totals = json_decode( json_encode($item->{'floors-total'}) , 1);
 					foreach($floors_totals as $floors_total){
-						$floors_total = ['name'=>'Количество этажей', 'value'=>$floors_total];
+						$options[] = ['name'=>'Количество этажей', 'value'=>$floors_total];
 					}
 				}
 				
@@ -387,7 +363,7 @@ class ControllerParseParse extends Controller {
 					$value = $areas['value'] ? $areas['value'] : null;
 					$unit = $areas['unit'] ? $areas['unit'] : null;
 				   
-					$area = ['name'=>'Общая площадь', 'value'=>$value . $unit];
+					$options[] = ['name'=>'Общая площадь', 'value'=>$value . $unit];
 				}
 				
 				if($item->{'living-space'}){
@@ -396,7 +372,7 @@ class ControllerParseParse extends Controller {
 					$value = $living_spaces['value'] ? $living_spaces['value'] : null;
 					$unit = $living_spaces['unit'] ? $living_spaces['unit'] : null;
 				   
-					$living_space = ['name'=>'Жилая площадь', 'value'=>$value . $unit];
+					$options[] = ['name'=>'Жилая площадь', 'value'=>$value . $unit];
 				}
 				
 				if($item->{'kitchen-space'}){
@@ -405,149 +381,121 @@ class ControllerParseParse extends Controller {
 					$value = $kitchen_spaces['value'] ? $kitchen_spaces['value'] : null;
 					$unit = $kitchen_spaces['unit'] ? $kitchen_spaces['unit'] : null;
 				   
-					$kitchen_space = ['name'=>'Площадь кухни', 'value'=>$value . $unit];
+					$options[] = ['name'=>'Площадь кухни', 'value'=>$value . $unit];
 				}
 				
 				if($item->{'phone'}){
 					$phones = json_decode( json_encode($item->{'phone'}) , 1);
 					foreach($phones as $phone){
-						$phone = ['name'=>'Наличие телефона', 'value'=>$phone];
+						$options[] = ['name'=>'Наличие телефона', 'value'=>$phone];
 					}
 				}
 				
 				if($item->{'balcony'}){
 					$balconys = json_decode( json_encode($item->{'balcony'}) , 1);
 					foreach($balconys as $balcony){
-						$balcony = ['name'=>'Тип балкона', 'value'=>$balcony];
+						$options[] = ['name'=>'Тип балкона', 'value'=>$balcony];
 					}
 				}
 				
 				if($item->{'building-type'}){
 					$building_types = json_decode( json_encode($item->{'building-type'}) , 1);
 					foreach($building_types as $building_type){
-						$building_type = ['name'=>'Тип дома', 'value'=>$building_type];
+						$options[] = ['name'=>'Тип дома', 'value'=>$building_type];
 					}
 				}
 				
 				if($item->{'mortgage'}){
 					$mortgages = json_decode( json_encode($item->{'mortgage'}) , 1);
 					foreach($mortgages as $mortgage){
-						$mortgage = ['name'=>'Возможность ипотеки', 'value'=>$mortgage];
+						$options[] = ['name'=>'Возможность ипотеки', 'value'=>$mortgage];
 					}
 				}
 				
 				if($item->{'water-supply'}){
 					$water_supplys = json_decode( json_encode($item->{'water-supply'}) , 1);
 					foreach($water_supplys as $water_supply){
-						$water_supply = ['name'=>'Водопровод', 'value'=>$water_supply];
+						$options[] = ['name'=>'Водопровод', 'value'=>$water_supply];
 					}
 				}
 				
 				if($item->{'internet'}){
 					$internets = json_decode( json_encode($item->{'internet'}) , 1);
 					foreach($internets as $internet){
-						$internet = ['name'=>'Интернет', 'value'=>$internet];
+						$options[] = ['name'=>'Интернет', 'value'=>$internet];
 					}
 				}
 				
 				if($item->{'new-flat'}){
 					$new_flats = json_decode( json_encode($item->{'new-flat'}) , 1);
 					foreach($new_flats as $new_flat){
-						$new_flat = ['name'=>'Признак новостройки', 'value'=>$new_flat];
+						$options[] = ['name'=>'Признак новостройки', 'value'=>$new_flat];
 					}
 				}
 				
 				if($item->{'agent-fee'}){
 					$agent_feeds = json_decode( json_encode($item->{'agent-fee'}) , 1);
 					foreach($agent_feeds as $ob_agent_feed){
-						$agent_feed = ['name'=>'Комиссия агента', 'value'=>$ob_agent_feed];
+						$options[] = ['name'=>'Комиссия агента', 'value'=>$ob_agent_feed];
 					}
 				}
 				  
 				if($item->{'commission'}){
 					$commissions = json_decode( json_encode($item->{'commission'}) , 1);
 					foreach($commissions as $ob_commission){
-						$commission = ['name'=>'Комиссия агентства', 'value'=>$ob_commission];
+						$options[] = ['name'=>'Комиссия агентства', 'value'=>$ob_commission];
 					}
 				}
 				
 				if($item->{'with-pets'}){
 					$withs_pets = json_decode( json_encode($item->{'with-pets'}) , 1);
 					foreach($withs_pets as $with_pets){
-						$with_pets = ['name'=>'Можно ли с животными', 'value'=>$with_pets];
+						$options[] = ['name'=>'Можно ли с животными', 'value'=>$with_pets];
 					}
 				}
 				
 				if($item->{'with-children'}){
 					$with_childrens = json_decode( json_encode($item->{'with-children'}) , 1);
 					foreach($with_childrens as $with_children){
-						$with_children = ['name'=>'Можно ли с детьми', 'value'=>$with_children];
+						$options[] = ['name'=>'Можно ли с детьми', 'value'=>$with_children];
 					}
 				}
 				
 				if($item->{'kitchen-furniture'}){
 					$kitchen_furnitures = json_decode( json_encode($item->{'kitchen-furniture'}) , 1);
 					foreach($kitchen_furnitures as $kitchen_furniture){
-						$kitchen_furniture = ['name'=>'Наличие мебели на кухне', 'value'=>$kitchen_furniture];
+						$options[] = ['name'=>'Наличие мебели на кухне', 'value'=>$kitchen_furniture];
 					}
 				}
 				
 				if($item->{'television'}){
 					$televisions = json_decode( json_encode($item->{'television'}) , 1);
 					foreach($televisions as $television){
-						$television = ['name'=>'Наличие телевизора', 'value'=>$television];
+						$options[] = ['name'=>'Наличие телевизора', 'value'=>$television];
 					}
 				}
 				
 				if($item->{'washing-machine'}){
 					$washing_machines = json_decode( json_encode($item->{'washing-machine'}) , 1);
 					foreach($washing_machines as $washing_machine){
-						$washing_machine = ['name'=>'Стиральная машина', 'value'=>$washing_machine];
+						$options[] = ['name'=>'Стиральная машина', 'value'=>$washing_machine];
 					}
 				}
 				
 				if($item->{'refrigerator'}){
 					$refrigerators = json_decode( json_encode($item->{'refrigerator'}) , 1);
 					foreach($refrigerators as $refrigerator){
-						$refrigerator = ['name'=>'Холодильник', 'value'=>$refrigerator];
+						$options[] = ['name'=>'Холодильник', 'value'=>$refrigerator];
 					}
 				}
 				
 				if($item->{'gas-supply'}){
 					$gas_supplys = json_decode( json_encode($item->{'gas-supply'}) , 1);
 					foreach($gas_supplys as $gas_supply){
-						$gas_supply = ['name'=>'Газ', 'value'=>$gas_supply];
+						$options[] = ['name'=>'Газ', 'value'=>$gas_supply];
 					}
 				}
-		   
-				$options[] = array(
-					$deal_status,
-					$room_furniture,
-					$bathroom_unit,
-					$renovation,
-					$rooms,
-					$floor,
-					$floors_total,
-					$area,
-					$kitchen_space,
-					$living_space,
-					$phone,
-					$balcony,
-					$building_type,
-					$mortgage,
-					$water_supply,
-					$internet,
-					$agent_feed,
-					$commission,
-					$with_pets,
-					$with_children,
-					$kitchen_furniture,
-					$television,
-					$washing_machine,
-					$refrigerator,
-					$gas_supply
-				);
-		   
+				
 				$data[] = array(
 					'ids' => $ids, 
 					'types' => $types,
@@ -563,8 +511,6 @@ class ControllerParseParse extends Controller {
 		}
 		
 		$message_data = $this->model_parse_parse->addObject($data);
-		
-		
 		
 		//var_dump($data);
 	}

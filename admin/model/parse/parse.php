@@ -4,9 +4,7 @@ class ModelParseParse extends Model {
     public function addObject($data){   
         
         $message_data = array();
-        
-        $option_exists = $this->getOption();
-        
+
         foreach($data as $data){
           
             $existing_model = $this->getModel($data['ids']);
@@ -68,31 +66,7 @@ class ModelParseParse extends Model {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $data['ids'] . "'");*/
                 
                 
-                //внесение названия опций которых нет в бд
-                if($data['options'][0]){
-                    foreach($data['options'][0] as $options){
-                        if($options){
-                            if(!in_array($options['name'], $option_exists)){
-                                var_dump($options['name']);
-                                
-                                /*if(is_array($array)){
-                                $datas = array_unique($array);
-                                var_dump($datas);
-                                }*/
-                                
-                                
-                                /*$dbsql = $this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = 'text', sort_order = '0'");
-                                
-                                if($dbsql){
-                                    $option_id = $this->getCurentOptionId();
-                                }
-                                
-                                $this->db->query("INSERT INTO " . DB_PREFIX . "option_description SET option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $options['name'] . "'");*/
-                            }
-                        }
-                    }
-                }
-                
+               
                 
                 
                 /*if($data['options'][0]){
@@ -131,16 +105,11 @@ class ModelParseParse extends Model {
                    
                     
                 }*/
-                
+               
+                $this->addOption($data['options']);
                 
             }
-            
-               
-                
 
-                
-             
-                
                 /*$message_data[] = array(
                     'id' => $object['id'],
                     'title' => $object['title']
@@ -156,44 +125,44 @@ class ModelParseParse extends Model {
         
         return $message_data;
     }
-
+    
     public function addOption($options){
-        $i=0;
-        foreach($options as $nameoption => $valueoption){
-            $i++;
-            $name = $this->getNameOption($nameoption);
-            
-            //if($nameoption != $name){
-            
-            $sql = ("INSERT INTO " . DB_PREFIX . "ocfilter_option SET status = '1', sort_order = '" . (int)$i . "', type = 'select', grouping = '0', selectbox = '0', color = '0', image = '0'");
-            
-            $dbsql = $this->db->query($sql);
-            
-            if($dbsql){
-                $option_id = $this->getCurentOptionId();
+        //внесение названия опций которых нет в бд
+        $option_exists = $this->getOption();
+        
+        if($options){
+            foreach($options as $option){
+                if(!in_array($option['name'], $option_exists)){
+                    $this->insertOptionName($name);
+                }
+
+                
+                
+                //var_dump($option['name']);
             }
-            
-            $this->db->query("INSERT INTO " . DB_PREFIX . "ocfilter_option_description SET option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $nameoption . "', description = '', postfix = ''");
-            
-            $this->db->query("INSERT INTO " . DB_PREFIX . "ocfilter_option_to_store SET option_id = '" . (int)$option_id . "', store_id = '0'");
-            
-            $this->db->query("UPDATE " . DB_PREFIX . "ocfilter_option SET `keyword` = '" . $this->translit($nameoption) . "' WHERE option_id = '" . (int)$option_id . "'");
-
-            //Значения опций
-            $sql = ("INSERT INTO " . DB_PREFIX . "ocfilter_option_value SET option_id = '" . (int)$option_id . "', sort_order = '" . (int)$i . "', `keyword` = '" . $this->translit($valueoption) . "', parse_keyword = '" . $this->translit($nameoption) . "', color = '', image = ''");
-
-            $dbsql = $this->db->query($sql);
-            
-            if($dbsql){
-              $value_id = $this->getCurentOptionValueId();
-            }
-            
-            $this->db->query("INSERT INTO " . DB_PREFIX . "ocfilter_option_value_description SET value_id = '" . $value_id . "', option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $valueoption . "'");
-
-            //}
-        }
+                 
+                    
+                    
+                
+        } 
     }
-
+    
+    public function insertOptionName($value){
+        $dbsql = $this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = 'text', sort_order = '0'");
+                        
+        if($dbsql){
+            $option_id = $this->getCurentOptionId();
+        }
+        
+        $this->db->query("INSERT INTO " . DB_PREFIX . "option_description SET option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $value . "'");
+        
+        return $value;
+    }
+    
+    
+    
+    
+    
     //Model
     public function getModel($model_id){        
         $query = $this->db->query("SELECT model FROM " . DB_PREFIX . "product WHERE model = '" . (int)$model_id . "'");
