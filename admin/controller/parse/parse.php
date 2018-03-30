@@ -251,15 +251,22 @@ class ControllerParseParse extends Controller {
 				if($item->{'image'} && $internal_id){
 				  
 					include_once  DIR_SYSTEM . 'library/imageimport/WideImage.php';
-				  
+					
+					$image_to_name_array = array();
+						
+					$folder_id = array();
+					
 					foreach($item->{'image'} as $image){
 						$obj_to_array = json_decode( json_encode($image) , 1);
-					
+
 						foreach($obj_to_array as $link){
-						
+							$image_to_name_array[] = basename($link);
+							
 							$image_name = basename($link);
 						
 							foreach($internal_id as $id){
+								$folder_id = $id;
+								
 								$dir = DIR_IMAGE . 'data/imagexml/' . $id . '/';
 						  
 								if(!file_exists($dir)){
@@ -285,10 +292,14 @@ class ControllerParseParse extends Controller {
 									} 
 								}
 						  
-								$images[] = array('data/imagexml/' . $id . '/' . $image_name);
-						  
+								//$images[] = array('data/imagexml/' . $id . '/' . $image_name);
 							}
 						}
+						
+						$images = array(
+							'name' => $image_to_name_array,
+							'folder' => $folder_id
+						);
 					}
 				}
 				
@@ -511,8 +522,6 @@ class ControllerParseParse extends Controller {
 		}
 		
 		$message_data = $this->model_parse_parse->addObject($data);
-		
-		//var_dump($data);
 	}
 	
 	//Controller

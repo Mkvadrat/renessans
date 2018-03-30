@@ -455,11 +455,13 @@ class ControllerUserUser extends Controller {
 		$this->data['token'] = $this->session->data['token'];
 		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
 		
-		$this->load->model('tool/image');
-		
- 		$resize = $this->model_tool_image->resize($user_info['image'], 183, 218);
-		
-		$this->data['thumb'] = $resize;
+		if(!empty($user_info['image'])){
+			$this->load->model('tool/image');
+			
+			$resize = $this->model_tool_image->resize($user_info['image'], 183, 218);
+			
+			$this->data['thumb'] = $resize;
+		}
 		
 		if (isset($this->request->post['phone_1'])) {
             $this->data['phone_1'] = $this->request->post['phone_1'];

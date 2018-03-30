@@ -6,12 +6,11 @@ class ModelParseParse extends Model {
         $message_data = array();
 
         foreach($data as $data){
-          
             $existing_model = $this->getModel($data['ids']);
 
             if(!in_array($data['ids'], $existing_model) && $data['ids']){
                 
-                /*if($data['prices']['currency'] == 'RUB'){
+               if($data['prices']['currency'] == 'RUB'){
                     $currency_id = '1';
                 }else{
                     $currency_id = '2';
@@ -28,12 +27,12 @@ class ModelParseParse extends Model {
                     $product_id = $this->getCurentId();
                 }
                 
-                if($data['images']){             
-                    foreach($data['images'] as $image){
-                        $checking_image = isset($image[0]) ? $image[0] : null;
-                        
-                        $this->db->query("UPDATE " . DB_PREFIX . "product SET image = '" . $checking_image . "' WHERE product_id = '" . (int)$product_id . "'");
-                    }
+                if($data['images']){
+                    $checking_image = isset($data['images']['name'][0]) ? $data['images']['name'][0] : null;
+                    
+                    $image = 'data/imagexml/' . $data['images']['folder'] . '/' . $checking_image;
+                    
+                    $this->db->query("UPDATE " . DB_PREFIX . "product SET image = '" . $image . "' WHERE product_id = '" . (int)$product_id . "'");
                 }
                 
                 $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '1', name = '" . $data['info']['title'] . "',
@@ -45,10 +44,10 @@ class ModelParseParse extends Model {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "product_to_layout SET product_id = '" . (int)$product_id . "', store_id = '0', layout_id = '0'");
                 
                 if($data['images']){
-                    foreach($data['images'] as $key => $images){
-                        foreach($images as  $image){
-                            $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $image . "', sort_order = '" . $key . "'");
-                        }
+                    foreach($data['images']['name'] as $key => $images){
+                        $image = 'data/imagexml/' . $data['images']['folder'] . '/' . $images;
+                        
+                        $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $image . "', sort_order = '" . $key . "'");
                     }
                 }
                 
@@ -63,87 +62,106 @@ class ModelParseParse extends Model {
                     }
                 }
                 
-                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $data['ids'] . "'");*/
-                
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $data['ids'] . "'");
                 
                
-                
-                
-                /*if($data['options'][0]){
-                    foreach($data['options'][0] as $options){
-                        if($options){
-                            foreach($search_opt->rows as $name_opt){
-                                
-                                if($name_opt['name'] == $options['name']){
-                                    //var_dump($options['name']);
-                                }else{
-                                    //var_dump($options['name']);
-                                }
-                                
-                                $dbsql = $this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = 'text', sort_order = '0'");
-                                
-                                if($dbsql){
-                                    $option_id = $this->getCurentOptionId();
-                                }
-                                
-                                $this->db->query("INSERT INTO " . DB_PREFIX . "option_description SET option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $options['name'] . "'");
-                            }
-                            
-                            if(!array_search($name_opt['name'], $options)){
-                            
-                                var_dump($options['name']);
-                           
-                            
-                            }
-                       
-                           
-                        }
-                        
-                       
-                    }
-                    
-                   
-                    
-                }*/
-               
-                $this->addOption($data['options']);
+                $this->addOption($product_id, $data['options']);
                 
             }
 
-                /*$message_data[] = array(
-                    'id' => $object['id'],
-                    'title' => $object['title']
-                );*/
-                
-                //$model_id = $object['id'];
-
+            $message_data[] = array(
+                'id' => $data['ids'],
+                'title' => $data['info']['title']
+            );
         }
-        
-
-        
-        
         
         return $message_data;
     }
     
-    public function addOption($options){
+    public function addOption($product_id, $options){
         //внесение названия опций которых нет в бд
         $option_exists = $this->getOption();
         
+        $opt_exists = array();
+        
+        if(!empty($option_exists)){
+            $opt_exists = $option_exists;
+        }
+        
         if($options){
             foreach($options as $option){
-                if(!in_array($option['name'], $option_exists)){
-                    $this->insertOptionName($name);
-                }
+                if(!in_array($option['name'], $opt_exists)){
+                    
+                    $this->insertOptionName($option['name']);
+                    
+                    if($option['name'] == 'Мебель' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Мебель' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '-'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '+'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Наличие телефона' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Наличие телефона' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Водопровод' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Водопровод' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Интернет' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Интернет' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '-'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '+'){
+                        $value = 'Да';
+                    }else{
+                        $value = $option['value'];
+                    }
 
+                    $option_id = $this->getOptionId($option['name']);
+
+                    $this->insertProductOption($product_id, $option_id[0], $value);
+                }
                 
-                
-                //var_dump($option['name']);
+                if(in_array($option['name'], $opt_exists)){
+                    if($option['name'] == 'Мебель' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Мебель' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '-'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '+'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Наличие телефона' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Наличие телефона' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Водопровод' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Водопровод' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Интернет' && $option['value'] == '0'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Интернет' && $option['value'] == '1'){
+                        $value = 'Да';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '-'){
+                        $value = 'Нет';
+                    }elseif($option['name'] == 'Признак новостройки' && $option['value'] == '+'){
+                        $value = 'Да';
+                    }else{
+                        $value = $option['value'];
+                    }
+
+                    $option_id = $this->getOptionId($option['name']);
+
+                    $this->insertProductOption($product_id, $option_id[0], $value);       
+                    //$this->insertOptionValue($option_id[0], $value);
+                }
             }
-                 
-                    
-                    
-                
         } 
     }
     
@@ -156,13 +174,23 @@ class ModelParseParse extends Model {
         
         $this->db->query("INSERT INTO " . DB_PREFIX . "option_description SET option_id = '" . (int)$option_id . "', language_id = '1', name = '" . $value . "'");
         
-        return $value;
+        return $option_id;
     }
     
+    public function insertOptionValue($option_id, $value){
+        $dbsql = $this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = 'no_image.jpg', sort_order = '0'");
+        
+        if($dbsql){
+            $current_option_value_id = $this->getCurentOptionValueId();
+        }
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "option_value_description SET option_value_id = '" . (int)$current_option_value_id . "', language_id = '1', option_id = '" . (int)$option_id . "', name = '" . $value . "'");
+    }
     
-    
-    
-    
+    public function insertProductOption($product_id, $option_id, $value){
+        $this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_id = '" . (int)$product_id . "', option_id = '" . (int)$option_id . "', option_value = '" . $value . "', required = '1', product_sort_option_id = '0'");		
+    }
+
     //Model
     public function getModel($model_id){        
         $query = $this->db->query("SELECT model FROM " . DB_PREFIX . "product WHERE model = '" . (int)$model_id . "'");
@@ -191,8 +219,30 @@ class ModelParseParse extends Model {
         return $option_id;
     }
     
+    public function getCurentOptionValueId(){ 
+        $query = $this->db->query("SELECT MAX(option_value_id) FROM  " . DB_PREFIX . "option_value");
+                
+        $curent_id = $query->row['MAX(option_value_id)'];
+        
+        $option_value_id = $curent_id;
+        
+        return $option_value_id;
+    }
+    
+    public function getCurentProductOptionId(){ 
+        $query = $this->db->query("SELECT MAX(product_option_id) FROM  " . DB_PREFIX . "product_option");
+                
+        $curent_id = $query->row['MAX(product_option_id)'];
+        
+        $product_option_id = $curent_id;
+        
+        return $product_option_id;
+    }
+    
     public function getOption(){
         $search_opt = $this->db->query("SELECT option_id, name FROM " . DB_PREFIX . "option_description WHERE language_id = '1'");
+        
+        $options_exist = array();
         
         if($search_opt){
             foreach($search_opt->rows as $curent_opt){
@@ -201,76 +251,17 @@ class ModelParseParse extends Model {
         }
         
         return $options_exist;
-        
     }
-
-    public function getCurentOptionValueId(){ 
-        $query = $this->db->query("SELECT MAX(value_id) FROM  " . DB_PREFIX . "ocfilter_option_value");
-                
-        $curent_id = $query->row['MAX(value_id)'];
+    
+    public function getOptionId($nameoption){
+        $search_opt = $this->db->query("SELECT option_id, name FROM " . DB_PREFIX . "option_description WHERE language_id = '1' AND name = '" . $nameoption . "'");
         
-        $value_id = $curent_id;
+        if($search_opt){
+            foreach($search_opt->rows as $curent_opt){
+                $options_exist[] = (int)$curent_opt['option_id'];
+            }
+        }
         
-        return $value_id;
-    }
-
-    public function getNameOption($noption){
-        $query = $this->db->query("SELECT name FROM " . DB_PREFIX . "ocfilter_option_description WHERE name = '" . $noption . "'");
-                
-        $name = $query->row;
-        
-        return $name;
-    }
-
-    public function translit($string) {
-        $replace = array(
-            'а' => 'a',
-            'б' => 'b',
-            'в' => 'v',
-            'г' => 'g',
-            'ґ' => 'g',
-            'д' => 'd',
-            'е' => 'e',
-            'є' => 'je',
-            'ё' => 'e',
-            'ж' => 'zh',
-            'з' => 'z',
-            'и' => 'i',
-            'і' => 'i',
-            'ї' => 'ji',
-            'й' => 'j',
-            'к' => 'k',
-            'л' => 'l',
-            'м' => 'm',
-            'н' => 'n',
-            'о' => 'o',
-            'п' => 'p',
-            'р' => 'r',
-            'с' => 's',
-            'т' => 't',
-            'у' => 'u',
-            'ф' => 'f',
-            'х' => 'h',
-            'ц' => 'ts',
-            'ч' => 'ch',
-            'ш' => 'sh',
-            'щ' => 'sch',
-            'ъ' => '',
-            'ы' => 'y',
-            'ь' => '',
-            'э' => 'e',
-            'ю' => 'ju',
-            'я' => 'ja',
-            
-            ' ' => '-',
-            '+' => 'plus'
-        );
-        
-        $string = mb_strtolower($string, 'UTF-8');
-        $string = strtr($string, $replace);
-        $string = preg_replace('![^a-zа-яёйъ0-9]+!isu', '-', $string);
-        $string = preg_replace('!\-{2,}!si', '-', $string);
-        
-        return $string;
+        return $options_exist;
     }
 }
