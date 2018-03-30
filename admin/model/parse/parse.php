@@ -67,12 +67,11 @@ class ModelParseParse extends Model {
                
                 $this->addOption($product_id, $data['options']);
                 
+                $message_data[] = array(
+                    'id' => $data['ids'],
+                    'title' => $data['info']['title']
+                );
             }
-
-            $message_data[] = array(
-                'id' => $data['ids'],
-                'title' => $data['info']['title']
-            );
         }
         
         return $message_data;

@@ -6,7 +6,9 @@
     <?php } ?>
   </div>
   <?php if ($success) { ?>
-  <div class="success"><?php echo $success; ?></div>
+		<?php foreach($success as $import) { ?>
+			<div class="success"><?php echo $import; ?></div>
+		<?php } ?>
   <?php } ?>
   <div class="box">
     <div class="heading">

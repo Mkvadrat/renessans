@@ -35,19 +35,20 @@ class ControllerParseParse extends Controller {
 		$this->data['cancel'] = $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL');
 
 		$this->data['token'] = $this->session->data['token'];
-		
+				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
 			
 			$message_data = $this->import();
-
-			/*foreach($message_data as $value){
-				$this->session->data['message'][] = array(
-					'id' => $value['id'],
-					'title' => $value['title']
-				);
-			}*/
-
-			$this->session->data['success'] = $this->language->get('text_success');
+			
+			if(!empty($message_data)){
+				foreach($message_data as $value){
+					$import = $value['id'] . ' - ' . $value['title'] . '<br />';
+					
+					$this->session->data['success'][] = $import;
+				}
+			}else{
+				$this->session->data['success'][] = $this->language->get('text_success');
+			}
 
 			$this->redirect($this->url->link('parse/parse', 'token=' . $this->session->data['token'], 'SSL'));
 		}
@@ -86,19 +87,7 @@ class ControllerParseParse extends Controller {
 		$info = array();
 		$options = array();
 		
-		/*if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			$catalog_protocol = HTTPS_CATALOG;
-		} else {
-			$catalog_protocol = HTTP_CATALOG;
-		}
-		
-		if (isset($this->request->post['sitemap']) && !$_FILES['userfile']['name']) {
-			$sitemap = $catalog_protocol . 'sitemap/' . $this->request->post['sitemap'];
-			if(@fopen($sitemap, "r")){
-				$items = $this->file_get_contents_curl($sitemap);
-			}
-		}else*/
-		if (isset($this->request->post['sitemap'])){
+		if (isset($this->request->post['sitemap']) && $_FILES['userfile']['name']){
 			$uploaddir = DIR_SITEMAP;
 			$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 			$upload = move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
@@ -107,10 +96,10 @@ class ControllerParseParse extends Controller {
 			if(!empty($upload)){
 				$items = simplexml_load_file($sitemap);
 			}
+		}else{
+			$items = $this->file_get_contents_curl('http://base.kvartus.ru/reklama/xml/base/10565/yrlsite.xml');
 		}
 		
-		//$item = 'http://renessans-krim.loc/sitemap/yrlsite.xml';
-		//var_dump($items);
 		if($items) {
 			$options = array();
 			foreach($items->offer as $item){	
@@ -291,8 +280,6 @@ class ControllerParseParse extends Controller {
 										break;
 									} 
 								}
-						  
-								//$images[] = array('data/imagexml/' . $id . '/' . $image_name);
 							}
 						}
 						
@@ -521,7 +508,7 @@ class ControllerParseParse extends Controller {
 			}
 		}
 		
-		$message_data = $this->model_parse_parse->addObject($data);
+		return $message_data = $this->model_parse_parse->addObject($data);
 	}
 	
 	//Controller
