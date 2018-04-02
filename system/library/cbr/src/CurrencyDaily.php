@@ -13,7 +13,6 @@ class CurrencyDaily
 	const KEY_CHAR = 1;
 	const KEY_NUM = 2;
 	const KEY_ID = 3;
-	const KEY_CODE = '';
 
 	public function setDate($date)
 	{
@@ -98,7 +97,6 @@ class CurrencyDaily
 		$xpath = $xml->xpath('Valute['.$codes.']');
 		$result = [];
 		foreach ($xpath as $element) {
-			var_dump(self::KEY_CODE);
 			$k = ($key == self::KEY_CODE)
 				? (string)$element->CharCode
 				: (($key == self::KEY_ID) ? (string)$element->attributes()['ID'] : (string)$element->CharCode);

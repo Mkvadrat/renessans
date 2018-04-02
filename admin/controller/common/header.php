@@ -103,6 +103,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_select_all'] = $this->language->get('text_select_all');
 		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
 		$this->data['text_actionobject'] = $this->language->get('text_actionobject');
+		$this->data['text_import'] = $this->language->get('text_import');
 		
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -120,6 +121,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['customer_support_category'] = $this->url->link('catalog/customer_support_category', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['actionobject'] = $this->url->link('module/specialobject', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['import'] = $this->url->link('parse/parse', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['home'] = $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['affiliate'] = $this->url->link('sale/affiliate', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['attribute'] = $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'], 'SSL');

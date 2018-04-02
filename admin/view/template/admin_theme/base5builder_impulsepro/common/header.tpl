@@ -256,6 +256,7 @@ if(array_intersect($page_name, $get_route)){
 						<ul>
 							<li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
 							<?php if($getblock){ ?>
+							<li><a href="<?php echo $import; ?>"><?php echo $text_import; ?></a></li>
 							<li><a class="parent"><?php echo $text_design; ?></a>
 								<ul>
 									<li><a href="<?php echo $layout; ?>"><?php echo $text_layout; ?></a></li>
