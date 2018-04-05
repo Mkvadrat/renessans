@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<realty-feed xmlns="http://webmaster.yandex.ru/schemas/feed/realty/2010-06">
+ <generation-date>2018-04-05T14:09:01+04:00</generation-date>
+ <offer internal-id="938471">
+  <type>продажа</type>
+  <property-type>жилая</property-type>
+  <category>квартира</category>
+  <url>https://kvartus.ru/realty/?hash=/one/737960</url>
+  <creation-date>2017-06-28T16:34:19+04:00</creation-date>
+  <last-update-date>2018-04-05T14:09:01+04:00</last-update-date>
+  <payed-adv>0</payed-adv>
+  <location>
+   <latitude>44.602178</latitude>
+   <longitude>33.475557</longitude>
+   <country>Россия</country>
+   <region>Севастополь</region>
+   <district/>
+   <locality-name>Севастополь город</locality-name>
+   <sub-locality-name>Гагаринский</sub-locality-name>
+   <non-admin-sub-locality>Гагаринский</non-admin-sub-locality>
+   <address>проспект Юрия Гагарина, 52</address>
+  </location>
+  <sales-agent>
+   <name>Евгений</name>
+   <phone>+79787177313</phone>
+   <category>агентство</category>
+   <organization>ООО "Ренессанс Крым"</organization>
+   <agency-id>36010565</agency-id>
+   <url/>
+   <email>evgeniy.renessans@mail.ru</email>
+  </sales-agent>
+  <price>
+   <currency>RUB</currency>
+   <value>7220575</value>
+  </price>
+  <deal-status>первичная продажа</deal-status>
+  <room-furniture>0</room-furniture>
+  <bathroom-unit>раздельный</bathroom-unit>
+  <renovation>частичный ремонт</renovation>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_beLxZMOGthFeLJd2lXci6oatVqIkd49f9LCYohvHo0M0APSLDU.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_py8hA4ugTCdtfNSfVXDyNyesxwCDMwc2Vb9m5tsPWw919R7VFA.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_2KQ1qi3wdlxcEpij02zFHLHfGLtyeGX6hDYyMSUQ3hSxw1HnU6.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_4STPtzqfjq7entnX21DCa3MYfCot6Eo1m8HFyXLIeJMr30eVRI.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_OVTpLksdvtCps1YNeuX2A4xainXMRexvZhKAr2ENm63EXSi1c6.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_AIZf5jZix19SGSlhTzhjKLgPRh8mqTtQriWnsLwPDvyaeJiX9p.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938471/base_kvartus_object_93_938471_1sUlnS6jDRwEAbHeOxGbmFVF03MpE3CwmmHz5DJzk53K6BPLYm.jpeg</image>
+  <rooms>3</rooms>
+  <floor>3</floor>
+  <floors-total>9</floors-total>
+  <area>
+   <value>89</value>
+   <unit>кв.м</unit>
+  </area>
+  <living-space>
+   <value>51.6</value>
+   <unit>кв.м</unit>
+  </living-space>
+  <kitchen-space>
+   <value>13</value>
+   <unit>кв.м</unit>
+  </kitchen-space>
+  <new-flat>+</new-flat>
+  <phone>0</phone>
+  <balcony>балкон/лоджия</balcony>
+  <building-type>монолит</building-type>
+  <description>Продам видовую трехкомнатную квартиру в микрорайоне Стрелецкая бухта по проспекту Гагарина,52.
+Квартира расположена на третьем этаже девятиэтажного дома новой постройки. Отличная планировка, комнаты изолированные, из окон открывается вид на море.
+Выполнена "чистовая отделка": установлена система теплых полов, медная проводка разведена по квартире, стены отделаны гипсокартоном. Отопление автономное - двухконтурный газовый котел. 
+Закрытый двор с детской площадкой.
+Уникальное месторасположение - в непосредственной близости исторический заповедник Херсонес с Владимирским собором, до пляжей Стрелецкой бухты 5-7 минут ходьбы через парк, до исторического центра города -10 минут. 
+Рядом объекты социального назначения: школы, детский сад, супермаркет "Novus", торгово-развлекательный центр "Муссон", магазины, рынок, остановки транспорта, парк Курсантов и парк Ахматовой. 
+Дом сдан, введен в эксплуатацию, заселен. Получены право устанавливающие документы российского образца.</description>
+ </offer>
+ <offer internal-id="938558">
+  <type>продажа</type>
+  <property-type>жилая</property-type>
+  <category>квартира</category>
+  <url>https://kvartus.ru/realty/?hash=/one/737963</url>
+  <creation-date>2017-06-28T16:34:19+04:00</creation-date>
+  <last-update-date>2018-04-05T14:09:01+04:00</last-update-date>
+  <payed-adv>0</payed-adv>
+  <location>
+   <latitude>44.595689</latitude>
+   <longitude>33.440352</longitude>
+   <country>Россия</country>
+   <region>Севастополь</region>
+   <district/>
+   <locality-name>Севастополь город</locality-name>
+   <sub-locality-name>Гагаринский</sub-locality-name>
+   <non-admin-sub-locality>Гагаринский</non-admin-sub-locality>
+   <address>Античный проспект, 12</address>
+  </location>
+  <sales-agent>
+   <name>Ирина</name>
+   <phone>+79787177244</phone>
+   <category>агентство</category>
+   <organization>ООО "Ренессанс Крым"</organization>
+   <agency-id>36010565</agency-id>
+   <url/>
+   <email>irinaf_renessans@mail.ru</email>
+  </sales-agent>
+  <price>
+   <currency>RUB</currency>
+   <value>7300000</value>
+  </price>
+  <deal-status>первичная продажа</deal-status>
+  <room-furniture>0</room-furniture>
+  <internet>1</internet>
+  <bathroom-unit>раздельный</bathroom-unit>
+  <renovation>хороший</renovation>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_OqLSWoeveUkQszeVKSbVK6597zEWSIuwY5fLkj6p4h6mHb8hT9.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_naGIDsNjWfH5uH9U9CiR9Z9aHsug7YJkYfSryvAkB8fVFeGFGP.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_Jsp1fCZtWtkdoKrYiuAUGrSVQo3NXbSwt7oyAeRmy1qMCHBL21.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_nGFmGcE1jBPSMDXuVlPlvhkB2PFzlceyIJLfLf6UHLDjfqD0Cj.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_DpTgyODmeCrF5ZQO0ucc3sw0wT84IdgbtZhREL4JeleaaUO1fR.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_0hYjqsCmstV5KqTlImOwtIUkiShwsC8iJXsZfVcyeYtPed0MqF.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_sP91jovRAZYlALrjtQU8x2UaNE8kYLvhqu9zJug9j5kKHCT1jD.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_cXrmpj2UJeXNCvmdAYjwJR8c0dsu3UE5IViX5bIEfviIRuMijW.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_389qZvaXqI1wJkmR1QtVqx7ux7fcZkTSjT99f9XvHOShY4ZQLi.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_S9Mt0vDzjcxxS3dp9aRm0xLISX0aM7lv6YPXjintlLR4EVjDV1.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_duWUFG1Cfx05KXqKJdchaVn7gBfUSTqVecGJJxcPU2KvP06o38.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_1nevKG8vjntV3xoymTUh0G5zSu25ekU6yZr8vquFEOqxbEWnoH.jpeg</image>
+  <image>http://img.kvartus.ru/server/php/files/base_kvartus/object/93/938558/base_kvartus_object_93_938558_xDMsiCMwb10yoiTETvAgUSxGaBPaC0vZu7iCzUYAMPY1XIvG4V.jpeg</image>
+  <rooms>3</rooms>
+  <floor>4</floor>
+  <floors-total>10</floors-total>
+  <area>
+   <value>86</value>
+   <unit>кв.м</unit>
+  </area>
+  <living-space>
+   <value>29.1</value>
+   <unit>кв.м</unit>
+  </living-space>
+  <kitchen-space>
+   <value>36</value>
+   <unit>кв.м</unit>
+  </kitchen-space>
+  <new-flat>+</new-flat>
+  <phone>0</phone>
+  <balcony>балкон</balcony>
+  <building-type>монолит</building-type>
+  <description>Продается просторная трехкомнатная квартира с видом на море в новом доме по пр. Античный, д. 12. Квартира расположена на 4-ом этаже 10-этажного дома. Выполнен дорогостоящий современные ремонт.
+Общая площадь 86 м2, жилая 47 м2. Кухня студия 36 м2, комнаты изолированные 13,70 м2, 15,4 м2. Большой раздельный санузел; балкон 9 м2 не застеклен с видом на море. Высота потолков 2.8 м, индивидуальное газовое отопление. Отличное местоположение — до пляжа Омега 3 минуты пешком. Двор оборудован современными детскими площадками с защитным покрытием; имеются как открытые парковочные места, так и готовые гаражи.</description>
+ </offer>
+</realty-feed>

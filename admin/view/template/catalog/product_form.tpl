@@ -30,9 +30,9 @@
 <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
 <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
     <ul class="ionTabs__head">
-        <li class="ionTabs__tab" data-target="tab-general"><?php echo $tab_general; ?></li>
-        <li class="ionTabs__tab" data-target="tab-data"><?php echo $tab_data; ?></li>
-        <li class="ionTabs__tab" data-target="tab-links"><?php echo $tab_links; ?></li>
+    <li class="ionTabs__tab" data-target="tab-general"><?php echo $tab_general; ?></li>
+    <li class="ionTabs__tab" data-target="tab-data"><?php echo $tab_data; ?></li>
+    <li class="ionTabs__tab" data-target="tab-links"><?php echo $tab_links; ?></li>
 		<li class="ionTabs__tab" data-target="tab-attribute"><?php echo $tab_attribute; ?></li>
 		<li class="ionTabs__tab" data-target="tab-option"><?php echo $tab_option; ?></li>
 		<?php if($getblock){ ?><li class="ionTabs__tab" data-target="tab-special"><?php echo $tab_special; ?></li><?php } ?>
@@ -92,7 +92,7 @@
           <?php } ?>
         </div>
         <div class="ionTabs__item" data-name="tab-data">
-                    <table class="form">
+				<table class="form">
             <tr>
               <td><span class="required">*</span> <?php echo $entry_model; ?></td>
               <td width="200"><input type="text" name="model" value="<?php echo $model; ?>" />
@@ -116,15 +116,16 @@
                     <?php endif; ?>
                 </td>
             </tr>
-			<?php if($getblock){ ?>
             <tr>
               <td><?php echo $entry_sku; ?></td>
               <td><input type="text" name="sku" value="<?php echo $sku; ?>" /></td>
             </tr>
+			<?php if($getblock){ ?>
             <tr>
               <td><?php echo $entry_upc; ?></td>
               <td><input type="text" name="upc" value="<?php echo $upc; ?>" /></td>
             </tr>
+			<input type="hidden" name="subtract" value="" />
 			<?php }else{ ?>
 			<input type="hidden" name="sku" value="" />
 			<input type="hidden" name="upc" value="" />
@@ -142,7 +143,7 @@
 			<input type="hidden" name="product_description[<?php echo $language['language_id']; ?>][meta_description]" value="" />
 			<input type="hidden" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="" />
 			<input type="hidden" name="product_description[<?php echo $language['language_id']; ?>][seo_title]" value="" />
-            <input type="hidden" name="product_description[<?php echo $language['language_id']; ?>][seo_h1]" value="" />
+      <input type="hidden" name="product_description[<?php echo $language['language_id']; ?>][seo_h1]" value="" />
 			<?php } ?>
             <tr>
               <td><?php echo $entry_ean; ?></td>
@@ -254,18 +255,6 @@
               <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="2" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_subtract; ?></td>
-              <td><select name="subtract">
-                  <?php if ($subtract) { ?>
-                  <option value="1" selected="selected"><?php echo $text_yes; ?></option>
-                  <option value="0"><?php echo $text_no; ?></option>
-                  <?php } else { ?>
-                  <option value="1"><?php echo $text_yes; ?></option>
-                  <option value="0" selected="selected"><?php echo $text_no; ?></option>
-                  <?php } ?>
-                </select></td>
-            </tr>
-            <tr>
               <td><?php echo $entry_keyword; ?></td>
               <td><input type="text" name="keyword" value="<?php echo $keyword; ?>" /></td>
             </tr>
@@ -335,7 +324,7 @@
                   <?php } ?>
                   <?php } ?>
                 </select></td>
-			  <td><?php echo $info_manufacturer; ?></td>
+							<td><?php echo $info_manufacturer; ?></td>
             </tr>
 		  <?php } ?>
             <tr>
@@ -350,7 +339,7 @@
                 <?php } ?>
                 <?php } ?>
               </select></td>
-			  <td><?php echo $info_main_category; ?></td>
+							<td><?php echo $info_main_category; ?></td>
             </tr>
             <tr>
               <td><?php echo $entry_category; ?></td>
@@ -462,13 +451,13 @@
 		<div class="ionTabs__item" data-name="tab-attribute">
 		<!--Применение опций обьекта при его создании-->
 		    <select name="main_attributen_value" style="width: 192px;">
-                <option value="0">Не вабрано</option>
-                <option value="1">Основные атрибуты для квартиры</option>
+        <option value="0">Не вабрано</option>
+        <option value="1">Основные атрибуты для квартиры</option>
 				<option value="2">Основные атрибуты для дома</option>
 				<option value="3">Основные атрибуты для виллы</option>
 				<option value="4">Основные опции для коммерч. недвижимости</option>
 				<option value="5">Основные опции для зем. участков</option>
-            </select>
+        </select>
 		<!--Применение опций обьекта при его создании-->
         <table id="attribute" class="list">
             <thead>

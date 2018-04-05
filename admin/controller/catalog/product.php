@@ -1158,13 +1158,13 @@ class ControllerCatalogProduct extends Controller {
 		*/
 		/*Оригинальный код с ocstore, вырезанный из-за ненадобности*/
 		
-		if (isset($this->request->post['subtract'])) {
+		/*if (isset($this->request->post['subtract'])) {
       		$this->data['subtract'] = $this->request->post['subtract'];
     	} elseif (!empty($product_info)) {
       		$this->data['subtract'] = $product_info['subtract'];
     	} else {
 			$this->data['subtract'] = 1;
-		}
+		}*/
 		
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];

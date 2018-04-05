@@ -306,6 +306,32 @@ class ControllerParseParse extends Controller {
 				
 				//Options
 				$options = array();
+				if($item->{'location'}){
+					foreach($item->{'location'} as $obj_info_opt){
+						if($obj_info_opt->{'locality-name'}){
+							$localitys_opt = json_decode( json_encode($obj_info_opt->{'locality-name'}) , 1);
+		  
+							foreach($localitys_opt as $locality){
+								$options[] = ['name'=>'Месторасположение', 'value'=>$locality];
+							}
+						}
+						
+						if($obj_info_opt->{'sub-locality-name'}){
+							$sub_localitys_opt = json_decode( json_encode($obj_info_opt->{'sub-locality-name'}) , 1);
+							foreach($sub_localitys_opt as $sub_locality){
+								$options[] = ['name'=>'Район', 'value'=>$sub_locality];
+							}
+						}
+						
+						if($obj_info_opt->{'address'}){
+							$address_opt = json_decode( json_encode($obj_info_opt->{'address'}) , 1);
+							foreach($address_opt as $addres){
+								$options[] = ['name'=>'Улица', 'value'=>$addres];
+							}
+						}
+					}
+				}
+				
 				if($item->{'deal-status'}){
 					$deals_status = json_decode( json_encode($item->{'deal-status'}) , 1);
 					foreach($deals_status as $deal_status){

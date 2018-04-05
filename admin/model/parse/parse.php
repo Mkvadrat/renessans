@@ -16,9 +16,9 @@ class ModelParseParse extends Model {
                     $currency_id = '2';
                 }
                                 
-                $sql = ("INSERT INTO " . DB_PREFIX . "product SET model = '" . $data['ids'] . "', agent = '26', sku = '', upc = '', ean = '', lat_lng = '" . $data['location']['coordinate'] . "', jan = '', isbn = '', mpn = '',
+                $sql = ("INSERT INTO " . DB_PREFIX . "product SET model = '" . $data['ids'] . "', agent = '26', sku = '" . $data['agents']['name'] . "', upc = '', ean = '', lat_lng = '" . $data['location']['coordinate'] . "', jan = '', isbn = '', mpn = '',
                         location = '', quantity = '1', minimum = '1', subtract = '1', stock_status_id = '7', date_available = NOW(), manufacturer_id = '', shipping = '', price = " . (float)$data['prices']['value'] . ",
-                        currency_id = " . $currency_id . ", points = '', weight = '', weight_class_id = '', length = '', width = '', height = '', length_class_id = '', status = '1', tax_class_id = '', sort_order = '',
+                        currency_id = " . $currency_id . ", points = '', weight = '', weight_class_id = '', length = '', width = '', height = '', length_class_id = '', status = '0', tax_class_id = '', sort_order = '',
                         date_added = NOW(), date_modified = NOW()");
                     
                 $dbsql = $this->db->query($sql);
