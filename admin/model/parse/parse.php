@@ -88,7 +88,9 @@ class ModelParseParse extends Model {
         }
         
         if($options){
+            $i = 0;
             foreach($options as $option){
+                $i++;
                 if(!in_array($option['name'], $opt_exists)){
                     
                     $this->insertOptionName($option['name']);
@@ -123,7 +125,7 @@ class ModelParseParse extends Model {
 
                     $option_id = $this->getOptionId($option['name']);
 
-                    $this->insertProductOption($product_id, $option_id[0], $value);
+                    $this->insertProductOption($product_id, $option_id[0], $value, $i);
                 }
                 
                 if(in_array($option['name'], $opt_exists)){
@@ -157,7 +159,7 @@ class ModelParseParse extends Model {
 
                     $option_id = $this->getOptionId($option['name']);
 
-                    $this->insertProductOption($product_id, $option_id[0], $value);       
+                    $this->insertProductOption($product_id, $option_id[0], $value, $i);       
                     //$this->insertOptionValue($option_id[0], $value);
                 }
             }
@@ -186,8 +188,8 @@ class ModelParseParse extends Model {
         $this->db->query("INSERT INTO " . DB_PREFIX . "option_value_description SET option_value_id = '" . (int)$current_option_value_id . "', language_id = '1', option_id = '" . (int)$option_id . "', name = '" . $value . "'");
     }
     
-    public function insertProductOption($product_id, $option_id, $value){
-        $this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_id = '" . (int)$product_id . "', option_id = '" . (int)$option_id . "', option_value = '" . $value . "', required = '1', product_sort_option_id = '0'");		
+    public function insertProductOption($product_id, $option_id, $value, $i){
+        $this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_id = '" . (int)$product_id . "', option_id = '" . (int)$option_id . "', option_value = '" . $value . "', required = '1', product_sort_option_id = '" . $i . "'");		
     }
 
     //Model
