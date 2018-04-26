@@ -1,0 +1,12 @@
+.imagemanager-style{
+	width: 20px;
+}
+
+.imagemanager-grab{
+	cursor: grab;
+	text-align: center;
+}
+
+.imagemanager-grabbing{
+	cursor:grabbing;
+}

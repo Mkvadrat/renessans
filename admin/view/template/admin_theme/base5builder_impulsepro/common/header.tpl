@@ -81,6 +81,9 @@ if(array_intersect($page_name, $get_route)){
 	  <script type="text/javascript" src="view/javascript/admin_theme/base5builder_impulsepro/ion-tabs/ion.tabs.min.js"></script>
 	  <script type="text/javascript" src="view/javascript/admin_theme/base5builder_impulsepro/ion-tabs/ion.tabs.js"></script>
 	  <!--Ion tabs js-->
+	  <link type="text/css" href="view/javascript/imagemanager/sortablemod/imagemanager.css" rel="stylesheet" />
+	  <link type="text/css" href="view/javascript/imagemanager/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	  <link type="text/css" href="view/javascript/imagemanager/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	  <?php foreach ($styles as $style) { ?>
 	  <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 	  <?php } ?>

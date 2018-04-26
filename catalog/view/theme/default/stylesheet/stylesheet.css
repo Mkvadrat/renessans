@@ -1865,6 +1865,7 @@ div.t4 {
 .t2-col-1 ul li, .t2-col-2 ul li, .t2-col-3 ul li {
 	line-height: 20px;
 	text-decoration: underline;
+    text-align: left;
 }
 .t2-col-1 ul li:before, .t2-col-2 ul li:before, .t2-col-3 ul li:before {
 	width: 6px;
@@ -4145,4 +4146,64 @@ form.in-r {
 
 .descr_module_case{
     text-align: left !important;
+}
+
+/*24.04.2018*/
+#object-skin{
+    width: 769px;
+    height: 455px;
+    position: absolute;
+    z-index: 1;
+    background: url(../img/ramka-slider.png);
+}
+
+.objects-maps{
+    padding: 27px 0px 0px 36px;
+}
+
+#map {
+    float: left;
+    width: 700px;
+    height: 400px;
+}
+.ballon {
+    padding: 5px;
+    width: 240px;
+    height: 79px;
+    float: left;
+    text-align: left;
+    color: #fff;
+    position: absolute;
+}
+.ballon img.ll {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 0 5px 5px 0;
+    border-radius: 60px;
+}
+.ballon a {
+    font-size: 10px;
+    font-weight: bold;
+    color: #FFF;
+}
+.ballon span{
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+}
+.ballon p {
+    font-size: 12px;
+}
+.ballon .close {
+    position: absolute;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    top: 0;
+    right: 0px;
+    cursor: pointer;
+}
+.ballon .close:hover {
+    color: #ccc;
 }
