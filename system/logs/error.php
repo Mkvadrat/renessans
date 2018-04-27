@@ -7725,3 +7725,120 @@
 2018-04-26 14:52:57 - PHP Notice:  Undefined offset: 1 in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\mapobject.php on line 91
 2018-04-26 14:52:57 - PHP Notice:  Undefined offset: 1 in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\mapobject.php on line 91
 2018-04-26 14:56:38 - PHP Notice:  Undefined variable: language in D:\OpenServer\domains\renessans-krim.location\admin\view\template\common\filemanager.tpl on line 24
+2018-04-26 17:22:05 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-26 17:22:05 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-26 17:22:05 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-26 17:22:05 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:05 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:05 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-26 17:22:18 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-26 17:22:18 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-26 17:22:18 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-26 17:22:18 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:18 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:18 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-26 17:22:36 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-26 17:22:38 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-26 17:22:38 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-26 17:22:38 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-26 17:22:38 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:38 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:38 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-26 17:22:44 - PHP Warning:  file_put_contents(D:\OpenServer\domains\renessans-krim.location\vqmod/checked.cache): failed to open stream: Permission denied in D:\OpenServer\domains\renessans-krim.location\vqmod\vqmod.php on line 151
+2018-04-26 17:22:45 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-26 17:22:47 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-26 17:22:47 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-26 17:22:48 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-26 17:22:48 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:48 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:22:48 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-26 17:23:05 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-26 17:23:07 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-26 17:23:07 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-26 17:23:07 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-26 17:23:07 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:23:07 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-26 17:23:07 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 9:35:29 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 9:35:29 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 9:35:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 9:35:30 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 9:35:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 9:35:30 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:04:21 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:04:23 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:04:23 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:04:23 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:04:23 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:04:23 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:04:23 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:04:33 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 696
+2018-04-27 10:04:35 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:04:35 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:04:36 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:04:36 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:04:36 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:04:36 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:05:04 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 695
+2018-04-27 10:05:06 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:05:06 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:05:06 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:05:06 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:06 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:06 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:05:23 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:05:25 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:05:25 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:05:25 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:05:25 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:25 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:25 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:05:41 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:05:44 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:05:44 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:05:44 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:05:44 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:44 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:44 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:05:52 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:05:54 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:05:54 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:05:54 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:05:54 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:54 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:05:54 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:06:28 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:06:30 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:06:30 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:06:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:06:30 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:06:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:06:30 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:06:57 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:07:00 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:07:00 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:07:00 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:07:00 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:07:00 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:07:00 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:11:27 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:11:29 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:11:29 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:11:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:11:30 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:11:30 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:11:30 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:11:58 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:12:00 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:12:00 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:12:00 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:12:00 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:12:00 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:12:00 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731
+2018-04-27 10:24:24 - PHP Notice:  Undefined index: plan_object in D:\OpenServer\domains\renessans-krim.location\catalog\view\theme\default\template\product\product.tpl on line 702
+2018-04-27 10:24:28 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-04-27 10:24:28 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-04-27 10:24:28 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 676
+2018-04-27 10:24:28 - PHP Notice:  Undefined variable: results in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:24:28 - PHP Notice:  Undefined variable: product_total in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 688
+2018-04-27 10:24:28 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 731

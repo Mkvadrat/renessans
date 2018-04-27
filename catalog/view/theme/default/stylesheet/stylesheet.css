@@ -1935,6 +1935,7 @@ ul li.razv:before {
 	width: 600px;
 	margin: 0 auto;
 	border: 3px solid #658abe;
+    min-height: 300px;
 }
 /*=================================== tabs-4 ===================================*/
 ul.wrap-otz {

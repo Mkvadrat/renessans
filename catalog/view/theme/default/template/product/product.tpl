@@ -366,22 +366,22 @@ jQuery(document).ready(function(){
 		<div class="wrap-karta-tabs">
           <div id="map" style="width:600px; height:300px"></div>
                 <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
-                <?php if($ean || $lat_lng){ ?>
+                <?php if(/*$ean ||*/ $lat_lng){ ?>
                     <script type="text/javascript">
                         var myMap;
 						
                         ymaps.ready(init);
                         function init()
                         {
-						<?php if($ean){ ?>
-						    ymaps.geocode('<?php echo $ean; ?>', {
-                                results: 1
-                            })
-						<?php }else{ ?>
+						<?php /*if($ean){ */?>
+						    //ymaps.geocode('<?php /*echo $ean;*/ ?>', {
+                                //results: 1
+                            //})
+						<?php //}else{ ?>
                         var myCoords = [<?php echo $lat_lng; ?>];  
                         var myGeocoder = ymaps.geocode(myCoords);
                         myGeocoder
-						<?php } ?>
+						<?php //} ?>
 						.then(
                                 function (res)
                                 {
