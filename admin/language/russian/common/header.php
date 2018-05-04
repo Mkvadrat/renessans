@@ -5,6 +5,7 @@ $_['heading_title']                    = 'Администрирование';
 // Text
 $_['text_affiliate']                   = 'Партнерская программа';
 $_['text_import']                      = 'Импорт обьектов';
+$_['text_excel']                       = 'Экспорт таблицы в excel';
 $_['text_attribute']                   = 'Атрибуты';
 $_['text_attribute_group']             = 'Группы атрибутов';
 $_['text_backup']                      = 'Резервные копии';

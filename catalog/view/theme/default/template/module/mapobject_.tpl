@@ -14,12 +14,11 @@
 					controls: ['zoomControl']
 				});
 				   
-				var myGeoObjects = [];
-				
-				<?php $i = 0; ?>
+				var myCollection = new ymaps.GeoObjectCollection();
+			
 				<?php foreach($products as $product){ ?>
 				
-				myGeoObjects[<?php echo $i; ?>] = new ymaps.Placemark([<?php echo $product['lat_lng']; ?>], { // Создаем метку с такими координатами и суем в переменную
+				myCollection.add(new ymaps.Placemark([<?php echo $product['lat_lng']; ?>], { // Создаем метку с такими координатами и суем в переменную
 								balloonContent: '<div class="ballon"><img src="<?php echo $product['image']; ?>" class="ll"/><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?><br><span>Подробнее</span></a><img class="close" onclick="myMap.balloon.close()" src="catalog/view/theme/default/img/close.png"/></div>' // сдесь содержимое балуна в формате html, все стили в css
 							}, {
 								iconLayout: 'default#image',
@@ -33,36 +32,11 @@
 								balloonImageSize: [260, 89], // размер картинки-бэкграунда балуна
 								balloonShadow: false,
 								balloonAutoPan: false // для фикса кривого выравнивания
-							});
-				<?php $i++ ?>
+							}));;
+
 				<?php } ?>
-											
-				var clusterer = new ymaps.Clusterer({
-					clusterDisableClickZoom: false,
-					clusterOpenBalloonOnClick: false,
-					// Устанавливаем стандартный макет балуна кластера "Карусель".
-					clusterBalloonContentLayout: 'cluster#balloonCarousel',
-					// Устанавливаем собственный макет.
-					   //clusterBalloonItemContentLayout: customItemContentLayout,
-					// Устанавливаем режим открытия балуна. 
-					// В данном примере балун никогда не будет открываться в режиме панели.
-					clusterBalloonPanelMaxMapArea: 0,
-					// Устанавливаем размеры макета контента балуна (в пикселях).
-					clusterBalloonContentLayoutWidth: 300,
-					clusterBalloonContentLayoutHeight: 200,
-					// Устанавливаем максимальное количество элементов в нижней панели на одной странице
-					clusterBalloonPagerSize: 5
-					// Настройка внешего вида нижней панели.
-					// Режим marker рекомендуется использовать с небольшим количеством элементов.
-					// clusterBalloonPagerType: 'marker',
-					// Можно отключить зацикливание списка при навигации при помощи боковых стрелок.
-					// clusterBalloonCycling: false,
-					// Можно отключить отображение меню навигации.
-					// clusterBalloonPagerVisible: false
-				});
-				
-				clusterer.add(myGeoObjects);
-				myMap.geoObjects.add(clusterer);
+										
+				myMap.geoObjects.add(myCollection);
 			}
 		</script>
 	</div>

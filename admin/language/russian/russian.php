@@ -69,6 +69,7 @@ $_['button_add_link']         = 'Добавить ссылку';
 $_['button_update_total']     = 'Обновить';
 $_['button_approve']          = 'Активировать';
 $_['button_reset']            = 'Сброс';
+$_['button_excel']            = 'Экспорт';
 
 // Tab
 $_['tab_address']             = 'Адрес';

@@ -1293,3 +1293,15 @@ input[type="checkbox"]{
 #date_modify{
 	text-align:center !important;
 }
+
+.buttons-excel a{
+	line-height: 40px;
+	margin: 0 0 0 10px;
+	background-color: #6d6d6d;
+	font-weight: bold;
+	color: #FFFFFF;
+	cursor: pointer;
+	padding: 0 36px;
+	display: inline-block;
+	text-decoration: none;
+}

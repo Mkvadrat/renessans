@@ -104,6 +104,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
 		$this->data['text_actionobject'] = $this->language->get('text_actionobject');
 		$this->data['text_import'] = $this->language->get('text_import');
+		$this->data['text_excel'] = $this->language->get('text_excel');
 		
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -184,6 +185,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['weight_class'] = $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['length_class'] = $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['excel'] = $this->url->link('excel/excel', 'token=' . $this->session->data['token'], 'SSL');
 			
 			/*Галерея*/
 			$this->data['gallery'] = $this->url->link('catalog/gallimage', 'token=' . $this->session->data['token'], 'SSL');
