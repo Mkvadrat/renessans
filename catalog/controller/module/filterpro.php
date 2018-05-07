@@ -646,6 +646,9 @@ class ControllerModuleFilterPro extends Controller {
 		$category_area_sale = $this->model_catalog_category->getCategoriesByParentId(118);
 		$category_area_rent = $this->model_catalog_category->getCategoriesByParentId(119);
 		
+		$product_total = array();
+		$results = array();
+		
 		if ($category_id == 20 || in_array($category_id, $category_area_sale)) {
 			$results = $this->model_module_filterpro->getProducts($data);
 			$product_total = $this->model_module_filterpro->getTotalProducts($data);
