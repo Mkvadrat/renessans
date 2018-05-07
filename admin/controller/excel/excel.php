@@ -236,6 +236,12 @@ class ControllerExcelExcel extends Controller {
 				$currency = 'USD';
 			}
 			
+			if($result['status'] == 1){
+				$status = 'Включен';
+			}else{
+				$status = 'Выключен';
+			}
+			
 			if(!empty($agent_data['lastname'])){
 				$agent = $agent_data['lastname'] . ' ' . $agent_data['firstname'];
 			}elseif(!empty($agent_data['firstname'])){
@@ -259,7 +265,8 @@ class ControllerExcelExcel extends Controller {
 				'live'          => $live_n_e,
 				'total'			=> $total_n_e,
 				'price'         => $this->currency->format($result['price']) . ' ' . $currency,
-				'agent'         => $agent
+				'agent'         => $agent,
+				'status'		=> $status
 			);
 		}
 		
@@ -290,7 +297,8 @@ class ControllerExcelExcel extends Controller {
 		$col_L = 'L';
 		$col_M = 'M';
 		$col_N = 'N';
-		$col_O = 'N';
+		$col_O = 'O';
+		$col_P = 'P';
 		
 		foreach($products as $product){
 			
@@ -325,6 +333,8 @@ class ControllerExcelExcel extends Controller {
 			$sheet->getStyle('N')->getAlignment()->setWrapText(true)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			$sheet->getColumnDimension('O')->setWidth(20);
 			$sheet->getStyle('O')->getAlignment()->setWrapText(true)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+			$sheet->getColumnDimension('P')->setWidth(20);
+			$sheet->getStyle('P')->getAlignment()->setWrapText(true)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			
 			$sheet->getStyle($col_A.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			$sheet->getStyle($col_B.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -341,6 +351,7 @@ class ControllerExcelExcel extends Controller {
 			$sheet->getStyle($col_M.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			$sheet->getStyle($col_N.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			$sheet->getStyle($col_O.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+			$sheet->getStyle($col_P.$rowNumber)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 			
 			//Шапка
 			$sheet->setCellValue('A1', 'Код (или порядковый номер)');
@@ -357,7 +368,8 @@ class ControllerExcelExcel extends Controller {
 			$sheet->setCellValue('L1', 'Общая площадь (м²)');
 			$sheet->setCellValue('M1', 'Стоимость объекта');
 			$sheet->setCellValue('N1', 'Сотрудник');
-			$sheet->setCellValue('O1', 'Комментарии');
+			$sheet->setCellValue('O1', 'Статус');
+			$sheet->setCellValue('P1', 'Комментарий');
 			
 			$sheet->setCellValue($col_A.$rowNumber, $product['model']);
 			$sheet->setCellValue($col_B.$rowNumber, $product['date_modified']);
@@ -373,6 +385,7 @@ class ControllerExcelExcel extends Controller {
 			$sheet->setCellValue($col_L.$rowNumber, $product['total']);
 			$sheet->setCellValue($col_M.$rowNumber, $product['price']);
 			$sheet->setCellValue($col_N.$rowNumber, $product['agent']);
+			$sheet->setCellValue($col_O.$rowNumber, $product['status']);
 
 			$rowNumber++;
 		}

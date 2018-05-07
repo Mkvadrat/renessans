@@ -134,7 +134,7 @@
 <!------------------------------------------------Вывод фотографий--------------------------------------------------> 
 
 <input id="check-1" type="checkbox" name="with_photo" value="1" checked hidden />
-<label for="check-1">Только с фото</label>
+<!--<label for="check-1">Только с фото</label>-->
 
 <!------------------------------------------------Вывод фотографий--------------------------------------------------> 
 
@@ -146,7 +146,7 @@
 
 <!------------------------------------------------Кнопка поиска-------------------------------------------------->      
  
-<button class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);getResetSale();return false;">Начать поиск</button> 
+<button class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':600},700);getResetSale();return false;">Начать поиск</button> 
 
 <!------------------------------------------------Кнопка поиска--------------------------------------------------> 
 
@@ -348,7 +348,7 @@
 <!------------------------------------------------Вывод фотографий--------------------------------------------------> 
 
 <input id="check-1" type="checkbox" name="with_photo" value="1" checked hidden />
-<label for="check-1">Только с фото</label>
+<!--<label for="check-1">Только с фото</label>-->
 
 <!------------------------------------------------Вывод фотографий--------------------------------------------------> 
 
@@ -360,7 +360,7 @@
 
 <!------------------------------------------------Кнопка поиска-------------------------------------------------->      
  
-<button id="search_button" class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':1770},700);getResetRent();return false;">Начать поиск</button> 
+<button id="search_button" class="form-but" onclick="setSort('sort=p.price&order=ASC');scroll(0,3000);jQuery('body, html').animate({'scrollTop':600},700);getResetRent();return false;">Начать поиск</button> 
 
 <!------------------------------------------------Кнопка поиска--------------------------------------------------> 
 

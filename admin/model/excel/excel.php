@@ -5,7 +5,7 @@ class ModelExcelExcel extends Model {
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product AS p 
                                     JOIN " . DB_PREFIX . "product_description AS pd 
                                     ON (p.product_id = pd.product_id)
-                                    AND p.status = 1 ORDER BY p.date_modified ASC");
+                                    /*AND p.status = 1*/ ORDER BY p.date_modified ASC");
         
         foreach($query->rows as $result) {
             $data[] = array(

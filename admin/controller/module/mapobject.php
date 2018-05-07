@@ -71,7 +71,7 @@ class ControllerModuleMapobject extends Controller {
 		
 		if (isset($this->request->post['mapobject_module'])) {
 			$this->data['modules'] = $this->request->post['mapobject_module'];
-		} elseif ($this->config->get('category_module')) { 
+		} elseif ($this->config->get('mapobject_module')) { 
 			$this->data['modules'] = $this->config->get('mapobject_module');
 		}	
 				

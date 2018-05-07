@@ -7,55 +7,7 @@
                 <div class="prod-right">
 				<?php echo $column_right; ?>
                 </div>
-              <div class="block-7">
-                        <div class="block-7-1 block-7-1-new">
-                            <h1><?php echo $heading_title; ?></h1>
-							<?php if(!empty($description)){?>
-							<?php  echo $description; ?>
-							<?php }else{ ?>
-                            <p>
-                                <span>«Ренессанс Крым» — это молодая успешно развивающаяся компания, предоставляющая широкий спектр услуг на рынке недвижимости Севастополя и Крыму. В компетенцию нашего агентства входит организация покупки, продажи и обмена недвижимости в Севастополе и Крыму. Сегменты рынка: недвижимость первичного и вторичного рынка, дома, дачи,элитная и коммерческая недвижимость, с помощью специалистов «Ренессанс Крым», доступны нашим клиентам.
-                                 Компания «Ренессанс Крым» работает, и развивает партнерские отношения с застройщиками Севастополя. Такое сотрудничество позволяет предлагать нашим клиентам выгодные условия, специальные программы и эксклюзивные предложения по приобретению квартир в строящихся домах в разных районах города. Благодаря работе наших специалистов вы сможете в максимально короткие сроки получить полную информацию о строящихся объектах, застройщиках и ценовой политике первичного рынке Севастополя, приобрести квартиру в новостройке в желаемом районе Севастополя.</span>
-                            </p>
-							<?php } ?>
-                        </div>
-						<div class="block-7-2">
-                            <a href="/index.php?route=information/information&information_id=69"><div class="block-4-1-info">
-                            <img src="/image/data/img-4-1.jpg" alt="" />
-                            <div class="block-4-1-bot-info" margin-top: 20%;>СОПРОВОЖДЕНИЕ СДЕЛКИ</div>
-						</div></a>
-                        </div>
-              </div>
-			  <div class="block-3">
-                        <h2>Районы</h2>
-						<?php $i = 0; ?>
-						<?php foreach($category_area_sale as $sale){ ?>
-						<?php if($category_id == 20 || $category_id == $sale){ ?>
-						<?php if(++$i == 2) break; ?>
-						<?php foreach($areas_sale as $area){ ?>
-                        <a href="<?php echo $area["path"]; ?>">
-						<div class="block-3-1">
-                            <?php if($area["image"]){ ?><img src="<?php echo HTTP_IMAGE . '/' . $area["image"]; ?>" alt="" /><?php }else{?><img src="/catalog/view/theme/default/img/nophoto_area.png" alt="Нет изображения"/>
-							<?php } ?>
-                            <div class="block-3-1-bot"><?php echo $area["name"]; ?></div>
-						</div></a>
-						 <?php } ?>
-						 <?php } ?>
-						 <?php } ?>
-						 <?php foreach($category_area_rent as $rent){ ?>
-						 <?php if($category_id == 18 || $category_id == $rent){ ?>
-						 <?php if(++$i == 2) break; ?>
-						 <?php foreach($areas_rent as $area){ ?>
-                        <a href="<?php echo $area["path"]; ?>">
-						<div class="block-3-1">
-                            <?php if($area["image"]){ ?><img src="<?php echo HTTP_IMAGE . '/' . $area["image"]; ?>" alt="" /><?php }else{?><img src="/catalog/view/theme/default/img/nophoto_area.png" alt="Нет изображения"/>
-							<?php } ?>
-                            <div class="block-3-1-bot"><?php echo $area["name"]; ?></div>
-						</div></a>
-						 <?php } ?>
-						 <?php } ?>
-						 <?php } ?>
-					</div>
+              
                 <div class="block-8" >
 				<h2><?php echo $heading_title; ?></h2>
 				<?php if ($products || $category_id == 20 || in_array($category_id, $category_area_sale) || $category_id == 18 || in_array($category_id, $category_area_rent)) { ?>
@@ -96,6 +48,56 @@
 						<div class="pagination"><?php echo $pagination; ?></div>
 						
                     </div>
+						
+						<div class="block-7">
+                        <div class="block-7-1 block-7-1-new">
+                            <h1><?php echo $heading_title; ?></h1>
+							<?php if(!empty($description)){?>
+							<?php  echo $description; ?>
+							<?php }else{ ?>
+                            <p>
+                                <span>«Ренессанс Крым» — это молодая успешно развивающаяся компания, предоставляющая широкий спектр услуг на рынке недвижимости Севастополя и Крыму. В компетенцию нашего агентства входит организация покупки, продажи и обмена недвижимости в Севастополе и Крыму. Сегменты рынка: недвижимость первичного и вторичного рынка, дома, дачи,элитная и коммерческая недвижимость, с помощью специалистов «Ренессанс Крым», доступны нашим клиентам.
+                                 Компания «Ренессанс Крым» работает, и развивает партнерские отношения с застройщиками Севастополя. Такое сотрудничество позволяет предлагать нашим клиентам выгодные условия, специальные программы и эксклюзивные предложения по приобретению квартир в строящихся домах в разных районах города. Благодаря работе наших специалистов вы сможете в максимально короткие сроки получить полную информацию о строящихся объектах, застройщиках и ценовой политике первичного рынке Севастополя, приобрести квартиру в новостройке в желаемом районе Севастополя.</span>
+                            </p>
+							<?php } ?>
+                        </div>
+						<div class="block-7-2">
+                            <a href="/index.php?route=information/information&information_id=69"><div class="block-4-1-info">
+                            <img src="/image/data/img-4-1.jpg" alt="" />
+                            <div class="block-4-1-bot-info" margin-top: 20%;>СОПРОВОЖДЕНИЕ СДЕЛКИ</div>
+						</div></a>
+                        </div>
+              </div>
+					<div class="block-3">
+													<h2>Районы</h2>
+							<?php $i = 0; ?>
+							<?php foreach($category_area_sale as $sale){ ?>
+							<?php if($category_id == 20 || $category_id == $sale){ ?>
+							<?php if(++$i == 2) break; ?>
+							<?php foreach($areas_sale as $area){ ?>
+													<a href="<?php echo $area["path"]; ?>">
+							<div class="block-3-1">
+															<?php if($area["image"]){ ?><img src="<?php echo HTTP_IMAGE . '/' . $area["image"]; ?>" alt="" /><?php }else{?><img src="/catalog/view/theme/default/img/nophoto_area.png" alt="Нет изображения"/>
+								<?php } ?>
+															<div class="block-3-1-bot"><?php echo $area["name"]; ?></div>
+							</div></a>
+							 <?php } ?>
+							 <?php } ?>
+							 <?php } ?>
+							 <?php foreach($category_area_rent as $rent){ ?>
+							 <?php if($category_id == 18 || $category_id == $rent){ ?>
+							 <?php if(++$i == 2) break; ?>
+							 <?php foreach($areas_rent as $area){ ?>
+													<a href="<?php echo $area["path"]; ?>">
+							<div class="block-3-1">
+															<?php if($area["image"]){ ?><img src="<?php echo HTTP_IMAGE . '/' . $area["image"]; ?>" alt="" /><?php }else{?><img src="/catalog/view/theme/default/img/nophoto_area.png" alt="Нет изображения"/>
+								<?php } ?>
+															<div class="block-3-1-bot"><?php echo $area["name"]; ?></div>
+							</div></a>
+							 <?php } ?>
+							 <?php } ?>
+							 <?php } ?>
+						</div>
             </div>
            <?php echo $content_bottom; ?>
           </div>
