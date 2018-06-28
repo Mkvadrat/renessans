@@ -11,19 +11,33 @@ class ControllerToolBackup extends Controller {
 				
 		if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->user->hasPermission('modify', 'tool/backup')) {
 			if (is_uploaded_file($this->request->files['import']['tmp_name'])) {
-				$content = file_get_contents($this->request->files['import']['tmp_name']);
+				move_uploaded_file($this->request->files["import"]["tmp_name"], DIR_DUMP . $this->request->files["import"]["name"]);
+				
+				$content = DIR_DUMP . $this->request->files["import"]["name"];
 			} else {
 				$content = false;
 			}
 			
 			if ($content) {
-				$this->model_tool_backup->restore($content);
+				$this->importer($content);
 				
 				$this->session->data['success'] = $this->language->get('text_success');
 				
 				$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));
 			} else {
-				$this->error['warning'] = $this->language->get('error_empty');
+				$filename = $this->remotedumper();
+				
+				$sfilename = $filename;
+				
+				$this->remoteimporter($sfilename);
+				
+				unlink($sfilename);
+				
+				$this->session->data['success'] = $this->language->get('text_success');
+				
+				$this->session->data['success'] = $this->language->get('text_success');
+				
+				$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));
 			}
 		}
 
@@ -76,8 +90,6 @@ class ControllerToolBackup extends Controller {
 
 		$this->load->model('tool/backup');
 			
-		$this->data['tables'] = $this->model_tool_backup->getTables();
-
 		$this->template = 'tool/backup.tpl';
 		$this->children = array(
 			'common/header',
@@ -95,20 +107,101 @@ class ControllerToolBackup extends Controller {
 			
 			$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));
 		} elseif ($this->user->hasPermission('modify', 'tool/backup')) {
-			$this->response->addheader('Pragma: public');
-			$this->response->addheader('Expires: 0');
-			$this->response->addheader('Content-Description: File Transfer');
-			$this->response->addheader('Content-Type: application/octet-stream');
-			$this->response->addheader('Content-Disposition: attachment; filename=' . date('Y-m-d_H-i-s', time()).'_backup.sql');
-			$this->response->addheader('Content-Transfer-Encoding: binary');
+
+			$backup = $this->dumper();
 			
-			$this->load->model('tool/backup');
-			
-			$this->response->setOutput($this->model_tool_backup->backup($this->request->post['backup']));
+			if($backup){
+				$this->file_force_download($backup);
+				
+				$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));			
+			}
 		} else {
 			$this->session->data['error'] = $this->language->get('error_permission');
 			
 			$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));			
+		}
+	}
+	
+	private function dumper(){
+		include_once  DIR_SYSTEM . 'library/dumper/dumper.php';
+			
+		$world_dumper = Shuttle_Dumper::create(array(
+			'host' => DB_HOSTNAME,
+			'username' => DB_USERNAME,
+			'password' => DB_PASSWORD,
+			'db_name' => DB_DATABASE,		));
+		// dump the database to plain text file
+		//$world_dumper->dump('world.sql');
+		
+		// send the output to gziped file:
+		$path = DIR_DUMP . date('Y-m-d_H-i-s', time()).'_backup.sql.gz';
+		
+		$return = $world_dumper->dump($path);
+		
+		return $path;
+	}
+	
+    private function remotedumper(){
+		include_once  DIR_SYSTEM . 'library/dumper/dumper.php';
+			
+		$world_dumper = Shuttle_Dumper::create(array(
+			'host' => DB_HOSTNAME,
+			'username' => DB_USERNAME,
+			'password' => DB_PASSWORD,
+			'db_name' => DB_DATABASE,		));
+		// dump the database to plain text file
+		//$world_dumper->dump('world.sql');
+		
+		// send the output to gziped file:
+		$path = DIR_DUMP . date('Y-m-d_H-i-s', time()).'_backup.sql.gz';
+		
+		$return = $world_dumper->dump($path);
+		
+		return $path;
+	}
+	
+	private function importer($file){
+		include_once  DIR_SYSTEM . 'library/dumper/MySQLImport.php';
+		
+		$db = new mysqli(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+		
+		$import = new MySQLImport($db);
+		$import->load($file);
+	}
+	
+	private function remoteimporter($file){
+		include_once  DIR_SYSTEM . 'library/dumper/MySQLImport.php';
+		
+		$db = new mysqli(RDB_HOSTNAME, RDB_USERNAME, RDB_PASSWORD, RDB_DATABASE);
+		
+		$import = new MySQLImport($db);
+		$import->load($file);
+	}
+	
+	private function file_force_download($file) {
+		if (file_exists($file)) {
+		  // сбрасываем буфер вывода PHP, чтобы избежать переполнения памяти выделенной под скрипт
+		  // если этого не сделать файл будет читаться в память полностью!
+		  if (ob_get_level()) {
+			ob_end_clean();
+		  }
+		  // заставляем браузер показать окно сохранения файла
+		  header('Content-Description: File Transfer');
+		  header('Content-Type: application/octet-stream');
+		  header('Content-Disposition: attachment; filename=' . basename($file));
+		  header('Content-Transfer-Encoding: binary');
+		  header('Expires: 0');
+		  header('Cache-Control: must-revalidate');
+		  header('Pragma: public');
+		  header('Content-Length: ' . filesize($file));
+		  // читаем файл и отправляем его пользователю
+		  if ($fd = fopen($file, 'rb')) {
+			while (!feof($fd)) {
+			  print fread($fd, 1024);
+			}
+			fclose($fd);
+		  }
+		  exit;
 		}
 	}
 }
