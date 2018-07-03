@@ -35,8 +35,6 @@ class ControllerToolBackup extends Controller {
 				
 				$this->session->data['success'] = $this->language->get('text_success');
 				
-				$this->session->data['success'] = $this->language->get('text_success');
-				
 				$this->redirect($this->url->link('tool/backup', 'token=' . $this->session->data['token'], 'SSL'));
 			}
 		}
