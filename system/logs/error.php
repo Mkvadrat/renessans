@@ -13011,3 +13011,30 @@ INSERT INTO `zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id`, 
 2018-06-28 17:25:14 - PHP Notice:  Undefined variable: error_warning in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_view_template_tool_backup.tpl on line 8
 2018-06-28 17:31:32 - PHP Warning:  fopen(): Filename cannot be empty in D:\OpenServer\domains\renessans-krim.location\system\library\dumper\MySQLImport.php on line 44
 2018-06-28 17:33:41 - PHP Warning:  gzopen(D:/OpenServer/domains/renessans-krim.location/dump/D:/OpenServer/domains/renessans-krim.location/dump/2018-06-28_17-33-39_backup.sql.gz): failed to open stream: Invalid argument in D:\OpenServer\domains\renessans-krim.location\system\library\dumper\MySQLImport.php on line 44
+2018-07-03 10:34:39 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-07-03 10:34:39 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-07-04 15:26:28 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-07-04 15:26:28 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-07-09 14:10:58 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-07-09 14:10:58 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-07-09 14:49:23 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 131
+2018-07-09 14:49:23 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 131
+2018-07-09 14:49:44 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 131
+2018-07-09 14:49:44 - PHP Warning:  Invalid argument supplied for foreach() in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 131
+2018-07-09 14:52:36 - PHP Notice:  Use of undefined constant getUserId - assumed 'getUserId' in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 134
+2018-07-09 14:52:36 - PHP Notice:  Use of undefined constant getUserId - assumed 'getUserId' in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 134
+2018-07-09 14:52:58 - PHP Notice:  Use of undefined constant getUserId - assumed 'getUserId' in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 134
+2018-07-09 14:52:58 - PHP Notice:  Use of undefined constant getUserId - assumed 'getUserId' in D:\OpenServer\domains\renessans-krim.location\vqmod\vqcache\vq2-D:_OpenServer_domains_renessans-krim.location_admin_controller_common_header.php on line 134
+2018-07-09 15:03:52 - PHP Notice:  Undefined variable: getblock in D:\OpenServer\domains\renessans-krim.location\admin\view\template\admin_theme\base5builder_impulsepro\common\header.tpl on line 206
+2018-07-09 15:03:52 - PHP Notice:  Undefined variable: getblock in D:\OpenServer\domains\renessans-krim.location\admin\view\template\admin_theme\base5builder_impulsepro\common\header.tpl on line 219
+2018-07-09 15:03:52 - PHP Notice:  Undefined variable: getblock in D:\OpenServer\domains\renessans-krim.location\admin\view\template\admin_theme\base5builder_impulsepro\common\header.tpl on line 261
+2018-07-09 16:35:16 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-07-09 16:35:16 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553
+2018-07-09 16:49:14 - PHP Warning:  file_get_contents(https://base.realtnavi.ru/i/crimea/d525adcd6464dc309718427ce0b1e125/2.jpg): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\OpenServer\domains\renessans-krim.location\system\library\imageimport\WideImage.php on line 195
+2018-07-09 16:49:14 - PHP Warning:  imagecreatefromstring(): Empty string or invalid image in D:\OpenServer\domains\renessans-krim.location\system\library\imageimport\WideImage.php on line 196
+2018-07-09 16:49:14 - PHP Warning:  imagecreatefromjpeg(https://base.realtnavi.ru/i/crimea/d525adcd6464dc309718427ce0b1e125/2.jpg): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\OpenServer\domains\renessans-krim.location\system\library\imageimport\Mapper\JPEG.php on line 34
+2018-07-09 16:49:14 - PHP Warning:  unpack(): Type c: not enough input, need 1, have 0 in D:\OpenServer\domains\renessans-krim.location\system\library\imageimport\vendor\de77\TGA.php on line 93
+2018-07-10 9:49:05 - PHP Notice:  Undefined index: min_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 551
+2018-07-10 9:49:05 - PHP Notice:  Undefined index: max_price in D:\OpenServer\domains\renessans-krim.location\catalog\controller\module\filterpro.php on line 553

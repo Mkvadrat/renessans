@@ -386,10 +386,10 @@ class ModelCatalogProduct extends Model {
 			}
 			/*Выбор агента*/
 			$data['agent'] = $_SESSION['user_id']; //Блокировка других админов в группе, не отображаются продукты
-			if($data['agent']==1){
+			if($data['agent']==29){
                 $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
             }else{
-                $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=".$data['agent'];
+                $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=29";
             }
 		    /*Выбор агента*/	
 			//$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; /*Орининальное содержиться в обычном ocstore, языковые переменные для вывода листа продуктов, при комментировании выбора агента выше, необходимо раскомментировать*/
@@ -726,11 +726,11 @@ class ModelCatalogProduct extends Model {
 		}
 		/*Выбор агента*/
 		$data['agent'] = $_SESSION['user_id'];
-		if($data['agent']==1){
+		if($data['agent']==29){
             $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
         } else{
-            $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=".$data['agent'];
+            $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=29";
         }
 		/*Выбор агента*/
 		

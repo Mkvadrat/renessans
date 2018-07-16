@@ -97,7 +97,7 @@ class ControllerParseParse extends Controller {
 				$items = simplexml_load_file($sitemap);
 			}
 		}else{
-			$items = $this->file_get_contents_curl('http://base.kvartus.ru/reklama/xml/base/10565/yrlsite.xml');
+			$items = $this->file_get_contents_curl('https://base.realtnavi.ru/xml/61d89184f26ad5a186e05c37cc7cdfb1?site');
 		}
 		
 		if($items) {

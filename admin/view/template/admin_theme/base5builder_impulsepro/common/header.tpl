@@ -301,7 +301,9 @@ if(array_intersect($page_name, $get_route)){
 								</ul>
 							</li>
 							<li><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>
+							<?php if($getblock){ ?>
 							<li><a href="<?php echo $backup; ?>"><?php echo $text_backup; ?></a></li>
+							<?php } ?>
 						</ul>
 					</li>
 					<!--<li id="reports"><a class="top"><?php echo $text_reports; ?></a>
