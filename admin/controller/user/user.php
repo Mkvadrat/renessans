@@ -387,7 +387,7 @@ class ControllerUserUser extends Controller {
 		$this->data['result_array'] = $getblocksomeform[0];
 		$this->data['result'] = $this->data['result_array']['user_group_id'];
 		
-		if($this->data['result'] != 29 ){
+		if($this->data['result'] != 1 ){
 			$this->data['getblock'] = false;
 		}else{
 			$this->data['getblock'] = true;

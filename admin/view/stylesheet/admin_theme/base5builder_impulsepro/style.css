@@ -529,6 +529,7 @@ h1 img{
 	padding: 20px 30px 30px 30px;
 	min-height: 500px;
 	position: relative;
+	overflow: hidden;
 }
 
 #content .content > form{

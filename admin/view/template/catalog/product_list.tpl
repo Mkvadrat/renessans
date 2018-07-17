@@ -35,7 +35,29 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                 <?php } ?></td>
-			  <td class="left"><?php echo $date_modify; ?></td>
+							<td class="left">
+								<?php if ($sort == 'p.date_modified') { ?>
+									<a href="<?php echo $sort_date_modified; ?>" class="<?php echo strtolower($order); ?>"><?php echo $date_modify; ?></a>
+								<?php } else { ?>
+									<a href="<?php echo $sort_date_modified; ?>"><?php echo $date_modify; ?></a>
+								<?php } ?>
+							</td>
+							
+							<td class="left">Объект (квартира, комната, дом, участок)</td>
+							<td class="left">Количество комнат</td>
+							<td class="left">Адрес объекта</td>
+							<td class="left">Район (Балаклавский/Нахимоский/Ленинский/Гагаринский)</td>
+							<td class="left">Этаж</td>
+							<td class="left">Этажность</td>
+							<td class="left">Площадь кухни (м²)</td>
+							<td class="left">Площадь комнат (м²)</td>
+							<td class="left">Жилая площадь (м²)</td>
+							<td class="left">Общая площадь (м²)</td>
+							
+							<?php if($getblock){ ?>
+							<td class="left">Агент</td>
+							<?php } ?>
+							
               <td class="left"><img src="view/image/information.png" width="15" height="15" hspace="10" border="0" align="absmiddle" class="tooltip" title="<?php echo $info_model; ?>" /> <?php if ($sort == 'p.model') { ?>
                 <a href="<?php echo $sort_model; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_model; ?></a>
                 <?php } else { ?>
@@ -77,7 +99,35 @@
               <td></td>
               <td></td>
               <td><input type="text" name="filter_name" value="<?php echo $filter_name; ?>" /></td>
-			  <td></td>
+							<td><input type="text" name="filter_date" value="<?php echo $filter_date; ?>" /></td>
+							<td><input type="text" name="type_object" value="<?php echo $type_object; ?>" /> </td>
+							<td><input type="text" name="rooms_count" value="<?php echo $rooms_count; ?>" /> </td>
+							<td><input type="text" name="address_object" value="<?php echo $address_object; ?>" /> </td>
+							<td><input type="text" name="area_object" value="<?php echo $area_object; ?>" /> </td>
+							<td><input type="text" name="floor_object" value="<?php echo $floor_object; ?>" /> </td>
+							<td><input type="text" name="storeys_object" value="<?php echo $storeys_object; ?>" /> </td>
+							<td><input type="text" name="kitchen_area" value="<?php echo $kitchen_area; ?>" /> </td>
+							<td><input type="text" name="rooms_area" value="<?php echo $rooms_area; ?>" /> </td>
+							<td><input type="text" name="live_area" value="<?php echo $live_area; ?>" /> </td>
+							<td><input type="text" name="total_area" value="<?php echo $total_area; ?>" /> </td>
+							
+							<?php if($getblock){ ?>
+							<td><select name="product_agent">
+								<option value="">Все</option>
+								<?php if ($all_agents) { ?>
+								<?php foreach($all_agents as $agents){ ?>
+								<?php if($curent_agent == $agents['user_id']){ ?>
+								<option value="<?php echo $agents['user_id']; ?>" selected="selected"><?php echo $agents['firstname'] . ' ' .  $agents['lastname'];  ?></option>
+								<?php }else{ ?>
+								<option value="<?php echo $agents['user_id']; ?>"><?php echo $agents['firstname'] . ' ' .  $agents['lastname'];  ?></option>
+								<?php } ?>
+
+								<?php } ?>
+								<?php } ?>
+                </select>
+							</td>
+							<?php } ?>
+							
               <td><input type="text" name="filter_model" value="<?php echo $filter_model; ?>" /></td>
               <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/></td>
               <!--<td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;" /></td>-->
@@ -109,12 +159,113 @@
 			    <input type="text" name="name" value="<?php echo $product['name']; ?>" size="40" id="name<?php echo $product['product_id']; ?>" />&nbsp;&nbsp;<a onclick="updateName(<?php echo $product['product_id']; ?>);$(this).fadeTo(250, 0.2);$(this).fadeTo(150, 0.5);"><img align="absmiddle" class="tooltip" src="view/image/disketa.png" alt="" title="<?php echo $text_save; ?>"/></a>
 			  </td>
 			  <td class="left" id="date_modify"><?php if($product['date_modify']){ ?><?php echo $product['date_modify']; ?><?php } ?></td>
-              <td class="left">
+				<!--OPTIONS-->
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 13){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 43){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 117){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 116){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 29){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 28){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 24){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 113){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 23){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				<td class="center">
+					<?php if($product['options']){ ?>
+					<?php foreach ($product['options'] as $options) { ?>
+						<?php if($options['option_id'] == 141){ ?>
+						<?php echo $options['option_value']; ?>
+						<?php } ?>
+					<?php } ?>
+					<?php } ?>
+				</td>
+				
+				<?php if($getblock){ ?>
+				<td class="center">
+					<?php if($product['agents']){ ?>
+					 <?php echo $product['agents']['name'] . ' ' . $product['agents']['surname'] ?>
+					<?php } ?>
+				</td>
+				<?php } ?>
+				
+				<!--OPTIONS-->
+        <td class="left">
 			    <input type="text" name="model" value="<?php echo $product['model']; ?>" size="20" id="model<?php echo $product['product_id']; ?>" />&nbsp;&nbsp;<a onclick="updateModel(<?php echo $product['product_id']; ?>);$(this).fadeTo(250, 0.2);$(this).fadeTo(150, 0.5);"><img align="absmiddle" class="tooltip" src="view/image/disketa_prod.png" alt="" title="<?php echo $text_save; ?>"/></a>
 			  </td>
-              <td class="left">
+        <td class="left">
 			    <input type="text" name="price" value="<?php echo $product['price']; ?>" size="10" id="price<?php echo $product['product_id']; ?>" />&nbsp;&nbsp;<a onclick="updatePrice(<?php echo $product['product_id']; ?>);$(this).fadeTo(250, 0.2);$(this).fadeTo(150, 0.5);"><img align="absmiddle" class="tooltip" src="view/image/disketa_price.png" alt="" title="<?php echo $text_save; ?>"/></a>
-  			  </td>
+  			</td>
 			  <!--<td class="right">
 				<span class="ajax-edit" id="quantity-<?php echo $product['product_id']; ?>" value="<?php echo $product['product_id']; ?>">
 				<input type="text" value="<?php echo $product['quantity']; ?>" size="5">
@@ -193,6 +344,83 @@ function filter() {
 		url += '&filter_name=' + encodeURIComponent(filter_name);
 	}
 	
+	var filter_date = $('input[name=\'filter_date\']').attr('value');
+	
+	if (filter_date) {
+		url += '&filter_date=' + encodeURIComponent(filter_date);
+	}
+	
+	
+	//options
+	var type_object = $('input[name=\'type_object\']').attr('value');
+	
+	if (type_object) {
+		url += '&type_object=' + encodeURIComponent(type_object);
+	}
+	
+	var rooms_count = $('input[name=\'rooms_count\']').attr('value');
+	
+	if (rooms_count) {
+		url += '&rooms_count=' + encodeURIComponent(rooms_count);
+	}
+	
+	var address_object = $('input[name=\'address_object\']').attr('value');
+	
+	if (address_object) {
+		url += '&address_object=' + encodeURIComponent(address_object);
+	}
+	
+	var area_object = $('input[name=\'area_object\']').attr('value');
+	
+	if (area_object) {
+		url += '&area_object=' + encodeURIComponent(area_object);
+	}
+	
+	var floor_object = $('input[name=\'floor_object\']').attr('value');
+	
+	if (floor_object) {
+		url += '&floor_object=' + encodeURIComponent(floor_object);
+	}
+	
+	var storeys_object = $('input[name=\'storeys_object\']').attr('value');
+	
+	if (storeys_object) {
+		url += '&storeys_object=' + encodeURIComponent(storeys_object);
+	}
+	
+	var kitchen_area = $('input[name=\'kitchen_area\']').attr('value');
+	
+	if (kitchen_area) {
+		url += '&kitchen_area=' + encodeURIComponent(kitchen_area);
+	}
+	
+	var rooms_area = $('input[name=\'rooms_area\']').attr('value');
+	
+	if (rooms_area) {
+		url += '&rooms_area=' + encodeURIComponent(rooms_area);
+	}
+	
+	var live_area = $('input[name=\'live_area\']').attr('value');
+	
+	if (live_area) {
+		url += '&live_area=' + encodeURIComponent(live_area);
+	}
+	
+	var total_area = $('input[name=\'total_area\']').attr('value');
+	
+	if (total_area) {
+		url += '&total_area=' + encodeURIComponent(total_area);
+	}
+	
+	var product_agent = $('select[name=\'product_agent\']').attr('value');
+	
+	if (product_agent) {
+		url += '&product_agent=' + encodeURIComponent(product_agent);
+	}
+	//options
+	
+	
+	
 	var filter_model = $('input[name=\'filter_model\']').attr('value');
 	
 	if (filter_model) {
@@ -246,6 +474,33 @@ $('input[name=\'filter_name\']').autocomplete({
 	}, 
 	select: function(event, ui) {
 		$('input[name=\'filter_name\']').val(ui.item.label);
+						
+		return false;
+	},
+	focus: function(event, ui) {
+      	return false;
+	}
+});
+
+//filter date
+$('input[name=\'filter_date\']').autocomplete({
+	delay: 0,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_date=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.date_modified,
+						value: item.product_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('input[name=\'filter_date\']').val(ui.item.label);
 						
 		return false;
 	},

@@ -191,7 +191,6 @@ class ControllerCommonHeader extends Controller {
 			$this->data['gallery'] = $this->url->link('catalog/gallimage', 'token=' . $this->session->data['token'], 'SSL');
 			/*Галерея*/
 			
-			
 			$this->data['stores'] = array();
 			
 			$this->load->model('setting/store');

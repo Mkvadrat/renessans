@@ -93,6 +93,19 @@ class ControllerCommonHome extends Controller {
 		} else {
 			$this->data['error_install'] = '';
 		}
+		
+		/* Блокирование доступа к формам*/
+		$this->load->model('catalog/product');
+		$getblocksomeform = $this->model_catalog_product->getBlockSomeForm($this->user->getUserName());
+		$this->data['result_array'] = $getblocksomeform[0];
+		$this->data['result'] = $this->data['result_array']['user_group_id'];
+		
+		if($this->data['result'] != 1 ){
+			$this->data['getblock'] = false;
+		}else{
+			$this->data['getblock'] = true;
+		}
+		/* Блокирование доступа к формам*/
 
 		// Check image directory is writable
 		$file = DIR_IMAGE . 'test';
@@ -480,13 +493,11 @@ class ControllerCommonHome extends Controller {
 		}
 	}
 
-    private function getList() {	
+   	private function getList() {	
 	
-		$this->load->language('catalog/product');
-    	
-		$this->document->setTitle($this->language->get('heading_title')); 
-		
-		$this->load->model('catalog/product');
+		/*Непонятное поле*/
+		$this->data['discount_row'] = '';
+        /*Непонятное поле*/
 	
 		if (isset($this->request->get['filter_category_id'])) {
 			$filter_category_id = $this->request->get['filter_category_id'];
@@ -500,6 +511,80 @@ class ControllerCommonHome extends Controller {
 		} else {
 			$filter_name = null;
 		}
+		
+		if (isset($this->request->get['filter_date'])) {
+			$filter_date = $this->request->get['filter_date'];
+		} else {
+			$filter_date = null;
+		}
+		
+		//options
+		if (isset($this->request->get['type_object'])) {
+			$type_object = $this->request->get['type_object'];
+		} else {
+			$type_object = null;
+		}
+
+		if (isset($this->request->get['address_object'])) {
+			$address_object = $this->request->get['address_object'];
+		} else {
+			$address_object = null;
+		}
+		
+		if (isset($this->request->get['area_object'])) {
+			$area_object = $this->request->get['area_object'];
+		} else {
+			$area_object = null;
+		}
+		
+		if (isset($this->request->get['rooms_count'])) {
+			$rooms_count = $this->request->get['rooms_count'];
+		} else {
+			$rooms_count = null;
+		}
+		
+		if (isset($this->request->get['floor_object'])) {
+			$floor_object = $this->request->get['floor_object'];
+		} else {
+			$floor_object = null;
+		}
+		
+		if (isset($this->request->get['storeys_object'])) {
+			$storeys_object = $this->request->get['storeys_object'];
+		} else {
+			$storeys_object = null;
+		}
+		
+		if (isset($this->request->get['kitchen_area'])) {
+			$kitchen_area = $this->request->get['kitchen_area'];
+		} else {
+			$kitchen_area = null;
+		}
+		
+		if (isset($this->request->get['rooms_area'])) {
+			$rooms_area = $this->request->get['rooms_area'];
+		} else {
+			$rooms_area = null;
+		}
+		
+		if (isset($this->request->get['live_area'])) {
+			$live_area = $this->request->get['live_area'];
+		} else {
+			$live_area = null;
+		}
+				
+		if (isset($this->request->get['total_area'])) {
+			$total_area = $this->request->get['total_area'];
+		} else {
+			$total_area = null;
+		}
+		
+		if (isset($this->request->get['product_agent'])) {
+			$product_agent = $this->request->get['product_agent'];
+		} else {
+			$product_agent = null;
+		}
+		//options
 		
 		if (isset($this->request->get['filter_category'])) {
 			$filter_category = $this->request->get['filter_category'];
@@ -555,6 +640,56 @@ class ControllerCommonHome extends Controller {
 			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
 		}
 		
+		if (isset($this->request->get['filter_date'])) {
+			$url .= '&filter_date=' . urlencode(html_entity_decode($this->request->get['filter_date'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		//options
+		if (isset($this->request->get['type_object'])) {
+			$url .= '&type_object=' . urlencode(html_entity_decode($this->request->get['type_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['address_object'])) {
+			$url .= '&address_object=' . urlencode(html_entity_decode($this->request->get['address_object'], ENT_QUOTES, 'UTF-8'));
+		}
+					
+		if (isset($this->request->get['area_object'])) {
+			$url .= '&area_object=' . urlencode(html_entity_decode($this->request->get['area_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_count'])) {
+			$url .= '&rooms_count=' . urlencode(html_entity_decode($this->request->get['rooms_count'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['floor_object'])) {
+			$url .= '&floor_object=' . urlencode(html_entity_decode($this->request->get['floor_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['storeys_object'])) {
+			$url .= '&storeys_object=' . urlencode(html_entity_decode($this->request->get['storeys_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['kitchen_area'])) {
+			$url .= '&kitchen_area=' . urlencode(html_entity_decode($this->request->get['kitchen_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_area'])) {
+			$url .= '&rooms_area=' . urlencode(html_entity_decode($this->request->get['rooms_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['live_area'])) {
+			$url .= '&live_area=' . urlencode(html_entity_decode($this->request->get['live_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['total_area'])) {
+			$url .= '&total_area=' . urlencode(html_entity_decode($this->request->get['total_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['product_agent'])) {
+			$url .= '&product_agent=' . urlencode(html_entity_decode($this->request->get['product_agent'], ENT_QUOTES, 'UTF-8'));
+		}
+		//options
+	
 		if (isset($this->request->get['filter_category'])) {
 			$url .= '&filter_category=' . urlencode(html_entity_decode($this->request->get['filter_category'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -609,7 +744,21 @@ class ControllerCommonHome extends Controller {
 
 		$data = array(
 			'filter_category_id' => $filter_category_id,
-			'filter_name'	     => $filter_name, 
+			'filter_name'	     => $filter_name,
+			'filter_date'	     => $filter_date,
+			//options
+			'rooms_count'	     => $rooms_count,
+			'address_object'	 => $address_object,
+			'area_object'		 => $area_object,
+			'type_object'	     => $type_object,
+			'floor_object'	     => $floor_object,
+			'storeys_object'	 => $storeys_object,
+			'kitchen_area'	 	 => $kitchen_area,
+			'rooms_area'	 	 => $rooms_area,
+			'live_area'	 		 => $live_area,
+			'total_area'	     => $total_area,
+			'product_agent'	     => $product_agent,
+			//options
 			'filter_category' 	 => $filter_category,
 			'filter_model'	  	 => $filter_model,
 			'filter_price'	  	 => $filter_price,
@@ -628,8 +777,15 @@ class ControllerCommonHome extends Controller {
 		$results = $this->model_catalog_product->getProducts($data);
 		
 		$this->load->model('catalog/category');
+		
 		$this->data['categories'] = $this->model_catalog_category->getCategories(0);
-				    	
+		
+		$this->data['all_agents']  = array();
+		
+		$this->load->model('user/user');
+		
+		$this->data['all_agents'] = $this->model_user_user->getAgents(0);
+						    	
 		foreach ($results as $result) {
 			$action = array();
 			
@@ -649,7 +805,7 @@ class ControllerCommonHome extends Controller {
 			$special = false;
 			
 			$product_specials = $this->model_catalog_product->getProductSpecials($result['product_id']);
-			
+		
 			foreach ($product_specials  as $product_special) {
 				if (($product_special['date_start'] == '0000-00-00' || $product_special['date_start'] < date('Y-m-d')) && ($product_special['date_end'] == '0000-00-00' || $product_special['date_end'] > date('Y-m-d'))) {
 					$special = $product_special['price'];
@@ -664,7 +820,55 @@ class ControllerCommonHome extends Controller {
 			}else{
 				$date_modified = date('d-m-Y', strtotime($result['date_modified']));
 			}
-	
+			
+			//options
+			$product_options = $this->model_catalog_product->getProductOptions($result['product_id']);			
+			
+			$this->data['product_options'] = array();
+				
+			foreach ($product_options as $product_option) {
+				if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') {
+					$product_option_value_data = array();
+					
+					foreach ($product_option['product_option_value'] as $product_option_value) {
+						$product_option_value_data[] = array(
+							'product_option_value_id' => $product_option_value['product_option_value_id'],
+							'option_value_id'         => $product_option_value['option_value_id'],
+							'quantity'                => $product_option_value['quantity'],
+							'subtract'                => $product_option_value['subtract'],
+							'price'                   => $product_option_value['price'],
+							'price_prefix'            => $product_option_value['price_prefix'],
+							'points'                  => $product_option_value['points'],
+							'points_prefix'           => $product_option_value['points_prefix'],						
+							'weight'                  => $product_option_value['weight'],
+							'weight_prefix'           => $product_option_value['weight_prefix']	
+						);						
+					}
+					
+					$product_options[] = array(
+						'product_option_id'    => $product_option['product_option_id'],
+						'product_option_value' => $product_option_value_data,
+						'option_id'            => $product_option['option_id'],
+						'name'                 => $product_option['name'],
+						'type'                 => $product_option['type'],
+						'required'             => $product_option['required'],
+						'product_sort_option_id'  => $product_option['product_sort_option_id']
+					);				
+				} 
+			}
+			
+			$product_agents = $this->model_catalog_product->getProductByAgent($result['agent']);
+			
+			$agents_data = array();
+			
+			foreach($product_agents as $agent){
+				$agents_data = array(
+					'user_id' => $agent['user_id'],
+					'name' 	  => isset($agent['firstname']) ? $agent['firstname'] : null,
+					'surname' => isset($agent['lastname']) ? $agent['lastname'] : null
+				);
+			}
+			
       		$this->data['products'][] = array(
 				'product_id' => $result['product_id'],
 				'name'       => $result['name'],
@@ -677,7 +881,9 @@ class ControllerCommonHome extends Controller {
 				'quantity'   => $result['quantity'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['product_id'], $this->request->post['selected']),
-				'action'     => $action
+				'action'     => $action,
+				'options'    => $product_options,
+				'agents'     => $agents_data
 			);
     	}
 		
@@ -736,6 +942,56 @@ class ControllerCommonHome extends Controller {
 			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
 		}
 		
+		if (isset($this->request->get['filter_date'])) {
+			$url .= '&filter_date=' . urlencode(html_entity_decode($this->request->get['filter_date'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		//options
+		if (isset($this->request->get['type_object'])) {
+			$url .= '&type_object=' . urlencode(html_entity_decode($this->request->get['type_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['address_object'])) {
+			$url .= '&address_object=' . urlencode(html_entity_decode($this->request->get['address_object'], ENT_QUOTES, 'UTF-8'));
+		}
+					
+		if (isset($this->request->get['area_object'])) {
+			$url .= '&area_object=' . urlencode(html_entity_decode($this->request->get['area_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_count'])) {
+			$url .= '&rooms_count=' . urlencode(html_entity_decode($this->request->get['rooms_count'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['floor_object'])) {
+			$url .= '&floor_object=' . urlencode(html_entity_decode($this->request->get['floor_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['storeys_object'])) {
+			$url .= '&storeys_object=' . urlencode(html_entity_decode($this->request->get['storeys_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['kitchen_area'])) {
+			$url .= '&kitchen_area=' . urlencode(html_entity_decode($this->request->get['kitchen_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_area'])) {
+			$url .= '&rooms_area=' . urlencode(html_entity_decode($this->request->get['rooms_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['live_area'])) {
+			$url .= '&live_area=' . urlencode(html_entity_decode($this->request->get['live_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['total_area'])) {
+			$url .= '&total_area=' . urlencode(html_entity_decode($this->request->get['total_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['product_agent'])) {
+			$url .= '&product_agent=' . urlencode(html_entity_decode($this->request->get['product_agent'], ENT_QUOTES, 'UTF-8'));
+		}
+		//options
+		
 		if (isset($this->request->get['filter_category'])) {
 			$url .= '&filter_category=' . urlencode(html_entity_decode($this->request->get['filter_category'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -767,6 +1023,7 @@ class ControllerCommonHome extends Controller {
 		}
 					
 		$this->data['sort_name'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, 'SSL');
+		$this->data['sort_date_modified'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.date_modified' . $url, 'SSL');
 		$this->data['sort_category'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p2c.category' . $url, 'SSL');
 		$this->data['sort_model'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, 'SSL');
 		$this->data['sort_price'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, 'SSL');
@@ -779,6 +1036,56 @@ class ControllerCommonHome extends Controller {
 		if (isset($this->request->get['filter_name'])) {
 			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
 		}
+		
+		if (isset($this->request->get['filter_date'])) {
+			$url .= '&filter_date=' . urlencode(html_entity_decode($this->request->get['filter_date'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		//options
+		if (isset($this->request->get['type_object'])) {
+			$url .= '&type_object=' . urlencode(html_entity_decode($this->request->get['type_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['address_object'])) {
+			$url .= '&address_object=' . urlencode(html_entity_decode($this->request->get['address_object'], ENT_QUOTES, 'UTF-8'));
+		}
+					
+		if (isset($this->request->get['area_object'])) {
+			$url .= '&area_object=' . urlencode(html_entity_decode($this->request->get['area_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_count'])) {
+			$url .= '&rooms_count=' . urlencode(html_entity_decode($this->request->get['rooms_count'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['floor_object'])) {
+			$url .= '&floor_object=' . urlencode(html_entity_decode($this->request->get['floor_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['storeys_object'])) {
+			$url .= '&storeys_object=' . urlencode(html_entity_decode($this->request->get['storeys_object'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['kitchen_area'])) {
+			$url .= '&kitchen_area=' . urlencode(html_entity_decode($this->request->get['kitchen_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['rooms_area'])) {
+			$url .= '&rooms_area=' . urlencode(html_entity_decode($this->request->get['rooms_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['live_area'])) {
+			$url .= '&live_area=' . urlencode(html_entity_decode($this->request->get['live_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['total_area'])) {
+			$url .= '&total_area=' . urlencode(html_entity_decode($this->request->get['total_area'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['product_agent'])) {
+			$url .= '&product_agent=' . urlencode(html_entity_decode($this->request->get['product_agent'], ENT_QUOTES, 'UTF-8'));
+		}
+		//options
 		
 		if (isset($this->request->get['filter_category'])) {
 			$url .= '&filter_category=' . urlencode(html_entity_decode($this->request->get['filter_category'], ENT_QUOTES, 'UTF-8'));
@@ -823,6 +1130,28 @@ class ControllerCommonHome extends Controller {
         $this->data['filter_category_id'] = $filter_category_id;
 	
 		$this->data['filter_name'] = $filter_name;
+		$this->data['filter_date'] = $filter_date;
+		
+		//options
+		$this->data['type_object'] = $type_object;
+		$this->data['address_object'] = $address_object;
+		$this->data['area_object'] = $area_object;
+		$this->data['rooms_count'] = $rooms_count;
+		$this->data['floor_object'] = $floor_object;
+		$this->data['storeys_object'] = $storeys_object;
+		$this->data['kitchen_area'] = $kitchen_area;
+		$this->data['rooms_area'] = $rooms_area;
+		$this->data['live_area'] = $live_area;
+		$this->data['total_area'] = $total_area;
+		$this->data['product_agent'] = $product_agent;
+		
+		if (isset($this->request->get['product_agent'])) {
+			$this->data['curent_agent'] = $this->request->get['product_agent'];
+		} else {
+			$this->data['curent_agent'] = null;
+		}
+		//options
+		
 		$this->data['filter_category'] = $filter_category;
 		$this->data['filter_model'] = $filter_model;
 		$this->data['filter_price'] = $filter_price;
@@ -832,13 +1161,13 @@ class ControllerCommonHome extends Controller {
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;
 
-		$this->template = 'common/home.tpl';
+		$this->template = 'catalog/product_list.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
 		);
 				
 		$this->response->setOutput($this->render());
-  	}	
+  	}
 }
 ?>

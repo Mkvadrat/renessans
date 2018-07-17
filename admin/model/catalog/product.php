@@ -384,12 +384,55 @@ class ModelCatalogProduct extends Model {
 			if (!empty($data['filter_category_id'])) {
 				$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id)";			
 			}
+			
+			//options
+			if (!empty($data['rooms_count']) && isset($data['rooms_count'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poa ON (p.product_id = poa.product_id) AND poa.option_id = '43'";	
+			}
+			
+			if (!empty($data['address_object']) && isset($data['address_object'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option pob ON (p.product_id = pob.product_id) AND pob.option_id = '117'";	
+			}
+			
+			if (!empty($data['type_object']) && isset($data['type_object'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poc ON (p.product_id = poc.product_id) AND poc.option_id = '13'";	
+			}
+			
+			if (!empty($data['area_object']) && isset($data['area_object'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option pod ON (p.product_id = pod.product_id) AND pod.option_id = '116'";	
+			}
+			
+			if (!empty($data['floor_object']) && isset($data['floor_object'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poe ON (p.product_id = poe.product_id) AND poe.option_id = '29'";	
+			}
+			
+			if (!empty($data['storeys_object']) && isset($data['storeys_object'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option pof ON (p.product_id = pof.product_id) AND pof.option_id = '28'";	
+			}
+			
+			if (!empty($data['kitchen_area']) && isset($data['kitchen_area'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option pog ON (p.product_id = pog.product_id) AND pog.option_id = '24'";	
+			}
+				
+			if (!empty($data['rooms_area']) && isset($data['rooms_area'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poh ON (p.product_id = poh.product_id) AND poh.option_id = '113'";	
+			}
+			
+			if (!empty($data['live_area']) && isset($data['live_area'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poi ON (p.product_id = poi.product_id) AND poi.option_id = '23'";	
+			}
+			
+			if (!empty($data['total_area']) && isset($data['total_area'])) {
+				$sql .= " JOIN " . DB_PREFIX . "product_option poj ON (p.product_id = poj.product_id) AND poj.option_id = '141'";	
+			}
+			//options
+			
 			/*Выбор агента*/
 			$data['agent'] = $_SESSION['user_id']; //Блокировка других админов в группе, не отображаются продукты
-			if($data['agent']==29){
+			if($data['agent']==1){
                 $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
             }else{
-                $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=29";
+                $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=".$data['agent'];
             }
 		    /*Выбор агента*/	
 			//$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; /*Орининальное содержиться в обычном ocstore, языковые переменные для вывода листа продуктов, при комментировании выбора агента выше, необходимо раскомментировать*/
@@ -397,6 +440,62 @@ class ModelCatalogProduct extends Model {
 			if (!empty($data['filter_name'])) {
 				$sql .= " AND LCASE(pd.name) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
 			}
+			
+			if (!empty($data['filter_date'])) {
+				if(stripos($data['filter_date'], '-')){
+					$date = date("Y-m-d", strtotime($data['filter_date']));
+				}else{
+					$date = $data['filter_date'];
+				}
+				
+				$sql .= " AND LCASE(p.date_modified) LIKE '" . $this->db->escape(utf8_strtolower($date)) . "%'";
+			}
+			
+			//options
+			if (!empty($data['rooms_count'])) {
+				$sql .= " AND LCASE(poa.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['rooms_count']))) . "%'";
+			}
+			
+			if (!empty($data['address_object'])) {
+				$sql .= " AND LCASE(pob.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['address_object']))) . "%'";
+			}
+			
+			if (!empty($data['type_object'])) {
+				$sql .= " AND LCASE(poc.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['type_object']))) . "%'";
+			}
+			
+			if (!empty($data['area_object'])) {
+				$sql .= " AND LCASE(pod.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['area_object']))) . "%'";
+			}
+			
+			if (!empty($data['floor_object'])) {
+				$sql .= " AND LCASE(poe.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['floor_object']))) . "%'";
+			}
+			
+			if (!empty($data['storeys_object'])) {
+				$sql .= " AND LCASE(pof.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['storeys_object']))) . "%'";
+			}
+			
+			if (!empty($data['kitchen_area'])) {
+				$sql .= " AND LCASE(pog.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['kitchen_area']))) . "%'";
+			}
+			
+			if (!empty($data['rooms_area'])) {
+				$sql .= " AND LCASE(poh.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['rooms_area']))) . "%'";
+			}
+			
+			if (!empty($data['live_area'])) {
+				$sql .= " AND LCASE(poi.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['live_area']))) . "%'";
+			}
+			
+			if (!empty($data['total_area'])) {
+				$sql .= " AND LCASE(poj.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['total_area']))) . "%'";
+			}
+			
+			if (!empty($data['product_agent'])) {
+				$sql .= " AND LCASE(p.agent) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['product_agent']))) . "%'";
+			}
+			//options
 
 			if (!empty($data['filter_model'])) {
 				$sql .= " AND LCASE(p.model) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_model'])) . "%'";
@@ -438,6 +537,18 @@ class ModelCatalogProduct extends Model {
 						
 			$sort_data = array(
 				'pd.name',
+				'p.date_modified',
+				'poa.option_value',
+				'pob.option_value',
+				'poc.option_value',
+				'pod.option_value',
+				'poe.option_value',
+				'pof.option_value',
+				'pog.option_value',
+				'poh.option_value',
+				'poi.option_value',
+				'poj.option_value',
+				'p.agent',
 				'p.model',
 				'p.price',
 				'p.quantity',
@@ -446,8 +557,8 @@ class ModelCatalogProduct extends Model {
 			);	
 			
 			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				//$sql .= " ORDER BY " . $data['sort'];
-				$sql .= " ORDER BY p.model";
+				$sql .= " ORDER BY " . $data['sort'];
+				//$sql .= " ORDER BY p.model";
 			} else {
 				$sql .= " ORDER BY pd.name";	
 			}
@@ -724,13 +835,56 @@ class ModelCatalogProduct extends Model {
 		if (!empty($data['filter_category_id'])) {
 			$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id)";			
 		}
+		
+		//options
+		if (!empty($data['rooms_count']) && isset($data['rooms_count'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poa ON (p.product_id = poa.product_id) AND poa.option_id = '43'";	
+		}
+		
+		if (!empty($data['address_object']) && isset($data['address_object'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option pob ON (p.product_id = pob.product_id) AND pob.option_id = '117'";	
+		}
+		
+		if (!empty($data['type_object']) && isset($data['type_object'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poc ON (p.product_id = poc.product_id) AND poc.option_id = '13'";	
+		}
+		
+		if (!empty($data['area_object']) && isset($data['area_object'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option pod ON (p.product_id = pod.product_id) AND pod.option_id = '116'";	
+		}
+		
+		if (!empty($data['floor_object']) && isset($data['floor_object'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poe ON (p.product_id = poe.product_id) AND poe.option_id = '29'";	
+		}
+		
+		if (!empty($data['storeys_object']) && isset($data['storeys_object'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option pof ON (p.product_id = pof.product_id) AND pof.option_id = '28'";	
+		}
+		
+		if (!empty($data['kitchen_area']) && isset($data['kitchen_area'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option pog ON (p.product_id = pog.product_id) AND pog.option_id = '24'";	
+		}
+			
+		if (!empty($data['rooms_area']) && isset($data['rooms_area'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poh ON (p.product_id = poh.product_id) AND poh.option_id = '113'";	
+		}
+		
+		if (!empty($data['live_area']) && isset($data['live_area'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poi ON (p.product_id = poi.product_id) AND poi.option_id = '23'";	
+		}
+		
+		if (!empty($data['total_area']) && isset($data['total_area'])) {
+			$sql .= " JOIN " . DB_PREFIX . "product_option poj ON (p.product_id = poj.product_id) AND poj.option_id = '141'";	
+		}
+		//options
+		
 		/*Выбор агента*/
 		$data['agent'] = $_SESSION['user_id'];
-		if($data['agent']==29){
+		if($data['agent']==1){
             $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
         } else{
-            $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=29";
+            $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.agent=".$data['agent'];
         }
 		/*Выбор агента*/
 		
@@ -739,7 +893,57 @@ class ModelCatalogProduct extends Model {
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND LCASE(pd.name) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
 		}
-
+		
+		if (!empty($data['filter_date'])) {
+			$sql .= " AND LCASE(p.date_modified) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_date'])) . "%'";
+		}
+		
+		//options
+		if (!empty($data['rooms_count'])) {
+			$sql .= " AND LCASE(poa.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['rooms_count']))) . "%'";
+		}
+		
+		if (!empty($data['address_object'])) {
+			$sql .= " AND LCASE(pob.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['address_object']))) . "%'";
+		}
+		
+		if (!empty($data['type_object'])) {
+			$sql .= " AND LCASE(poc.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['type_object']))) . "%'";
+		}
+		
+		if (!empty($data['area_object'])) {
+			$sql .= " AND LCASE(pod.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['area_object']))) . "%'";
+		}
+		
+		if (!empty($data['floor_object'])) {
+			$sql .= " AND LCASE(poe.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['floor_object']))) . "%'";
+		}
+		
+		if (!empty($data['storeys_object'])) {
+			$sql .= " AND LCASE(pof.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['storeys_object']))) . "%'";
+		}
+		
+		if (!empty($data['kitchen_area'])) {
+			$sql .= " AND LCASE(pog.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['kitchen_area']))) . "%'";
+		}
+		
+		if (!empty($data['rooms_area'])) {
+			$sql .= " AND LCASE(poh.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['rooms_area']))) . "%'";
+		}
+		
+		if (!empty($data['live_area'])) {
+			$sql .= " AND LCASE(poi.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['live_area']))) . "%'";
+		}
+		
+		if (!empty($data['total_area'])) {
+			$sql .= " AND LCASE(poj.option_value) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['total_area']))) . "%'";
+		}
+		
+		if (!empty($data['product_agent'])) {
+			$sql .= " AND LCASE(p.agent) LIKE '" . $this->db->escape(trim(utf8_strtolower($data['product_agent']))) . "%'";
+		}
+		//options
+			
 		if (!empty($data['filter_model'])) {
 			$sql .= " AND LCASE(p.model) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_model'])) . "%'";
 		}
@@ -934,5 +1138,10 @@ class ModelCatalogProduct extends Model {
 	}
 	/*Применение атрибутов объекта при его создании*/
 	
+	public function getProductByAgent($agent_id){
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p JOIN " . DB_PREFIX . "user u ON (p.agent = u.user_id) AND p.agent = '" . $agent_id . "'");	
+		
+		return $query->rows;
+	}
 }
 ?>

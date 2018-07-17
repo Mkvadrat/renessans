@@ -63,6 +63,18 @@ $_['column_action']                	= 'Действие';
 $_['date_modify']                   = 'Дата изменения объекта';
 $_['date_modified']                 = 'В объекте<br>изменения<br>отсутствуют';
 
+// Column 2
+$_['column_name']            = 'Название объекта';
+$_['column_category']        = 'Категория';
+$_['column_model']           = 'Модель';
+$_['column_image']           = 'Изображение';
+$_['column_price']           = 'Цена на сайте';
+$_['column_quantity']        = 'Количество';
+$_['column_status']          = 'Статус';
+$_['column_action']          = 'Действие';
+$_['date_modify']            = 'Дата изменения объекта';
+$_['date_modified']          = 'В объекте<br>изменения<br>отсутствуют';
+
 // Entry
 $_['entry_range']                  	= 'Выбор диапазона:';
 
